@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.web.dao;
+package com.lazyyy.blog.dao;
 
-import com.web.database.ConnectionPoolManager;
+import com.lazyyy.blog.database.ConnectionPoolManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

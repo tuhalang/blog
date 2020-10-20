@@ -3,20 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.web.model;
-
-import java.util.Date;
+package com.lazyyy.blog.model;
 
 /**
  *
  * @author hungpv
  */
-public class Category {
-    
+public class Tag {
     private Long id;
     private String name;
-    private String code;
-    private Date createdAt;
 
     public Long getId() {
         return id;
@@ -33,23 +28,6 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
-    }
-    
     
     
 }

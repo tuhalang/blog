@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.web.model;
+package com.lazyyy.blog.model;
 
 import java.util.Date;
 

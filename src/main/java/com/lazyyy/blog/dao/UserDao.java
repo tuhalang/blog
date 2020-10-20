@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.web.dao;
+package com.lazyyy.blog.dao;
 
-import com.web.model.User;
+import com.lazyyy.blog.model.User;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLType;
 import java.sql.Types;
 import java.util.Date;
 import org.apache.logging.log4j.LogManager;

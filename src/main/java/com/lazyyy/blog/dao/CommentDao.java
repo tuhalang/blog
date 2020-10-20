@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.web.dao;
+package com.lazyyy.blog.dao;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -12,22 +12,22 @@ import org.apache.logging.log4j.Logger;
  *
  * @author hungpv
  */
-public class TagDao extends BaseDao {
-    private static final Logger LOGGER = LogManager.getLogger(TagDao.class);
-    private static TagDao tagDao;
+public class CommentDao extends BaseDao{
+    private static final Logger LOGGER = LogManager.getLogger(CommentDao.class);
+    private static CommentDao commentDao;
     private static final Object MUTEX = new Object();
     
-    private TagDao(){}
+    private CommentDao(){}
     
     
-    public static TagDao getInstance(){
-        if(tagDao == null){
+    public static CommentDao getInstance(){
+        if(commentDao == null){
             synchronized(MUTEX){
-                if(tagDao == null){
-                    tagDao = new TagDao();
+                if(commentDao == null){
+                    commentDao = new CommentDao();
                 }
             }
         }
-        return tagDao;
+        return commentDao;
     }
 }
