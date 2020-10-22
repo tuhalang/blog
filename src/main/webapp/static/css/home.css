@@ -162,7 +162,49 @@ nav:hover .dropdown {
     color: black;
 }
 
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    min-height: 800px;
+}
 
+.list-post{
+    width: 65%;
+}
+
+.list-categories{
+    width: 20%;
+    padding: 8px 8px 20px 8px;
+    background-color: white;
+    border-radius: 10px;
+    height: fit-content;
+    margin: 20px 0 20px 0;
+    box-shadow: 8px 12px 3px rgba(0,0,0,0.7);
+}
+
+.sub_categ{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.amount-post{
+    opacity: 0.5;
+}
+
+
+
+
+
+
+
+
+
+
+/*-----------------------------------------------------------------------------------------------------*/
 .night {
     position: relative;
     width: 100%;

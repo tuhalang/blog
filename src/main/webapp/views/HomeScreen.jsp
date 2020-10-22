@@ -68,5 +68,22 @@
         </div>
     </div>
 </div>
+<div class="container">
+    <div class="list-post">
+        <c:forEach var = "i" begin = "1" end = "5">
+            <jsp:include page="common/sub_post.jsp"></jsp:include>
+        </c:forEach>
+    </div>
+    <div class="list-categories">
+        <input />
+        <h2>Categories</h2>
+        <c:forEach var = "i" begin = "1" end = "5">
+            <div class="sub_categ">
+                <label>Fashion</label>
+                <p class="amount-post">(6)</p>
+            </div>
+        </c:forEach>
+    </div>
+</div>
 </body>
 </html>
