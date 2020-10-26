@@ -1,4 +1,5 @@
-function openCity(evt, action) {
+function changeTab(evt, action) {
+    if (action === "preview") onPreview();
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontent");
     for (i = 0; i < tabcontent.length; i++) {
@@ -11,4 +12,11 @@ function openCity(evt, action) {
     document.getElementById(action).style.display = "block";
     evt.currentTarget.className += " active";
 }
-document.getElementById("edit").style.display="block";
+
+var mdHtml = markdownit("commonmark")
+
+async function onPreview() {
+    document.getElementById("preview").innerHTML = mdHtml.render(document.getElementById("text-area").value)
+}
+
+document.getElementById("edit").style.display = "block";

@@ -4,76 +4,6 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
-.navbar {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    display: flex;
-    height: 80px;
-    background-color: #212529;
-}
-
-#logo {
-    width: 80px;
-    margin-left: 10px;
-}
-
-.menu {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    height: 100%;
-    margin-right: 10px;
-}
-
-.menu a {
-    text-decoration: none;
-    color: white;
-    padding: 10px;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: flex;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 140px;
-    height: 0;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    padding: 0px;
-    z-index: 1;
-    margin-left: -140px;
-    border-radius: 10px;
-    font-size: 14px;
-    flex-direction: column;
-    align-items: flex-start;
-    transition: height 3s;
-    overflow: hidden;
-}
-
-.dropdown-content div {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 34px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-.dropdown-content i {
-    width: 24px;
-}
-
-.dropdown:hover .dropdown-content{
-    display: flex;
-    height: 150px;
-    padding: 8px;
-}
-
 #edit-content{
     height: 100vh;
     padding: 10px;
@@ -101,7 +31,7 @@ body {
 
 .tag-edit{
     width: -webkit-fill-available;
-    margin: 10px 0;
+    margin: 18px 0;
     font-size: 16px;
     border: none;
 }
@@ -114,21 +44,38 @@ body {
     outline: none;
 }
 
+#tab-space{
+    width: 8px;
+    border-bottom: 1px solid #ccc;
+    height: 46px;
+}
+
 .tab {
     overflow: hidden;
-    border: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
     background-color: #f1f1f1;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 46px;
+}
+.tab div:nth-child(1){
+    display: inline-flex;
 }
 
 .tab button {
     background-color: inherit;
-    float: left;
     border: none;
     outline: none;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 0px 16px;
     transition: 0.3s;
-    font-size: 17px;
+    font-size: 14px;
+    width: 84px;
+    border-bottom: 1px solid #ccc;
 }
 
 .tab button:hover {
@@ -137,17 +84,40 @@ body {
 
 .tab button.active {
     background-color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: none;
+    margin-top: 8px;
 }
 
 .tabcontent {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
     border-top: none;
 }
 
 #body-edit{
     width: -webkit-fill-available;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#edit{
+    flex: 1;
+}
+
+#preview{
+    flex: 1;
+    font-style: normal;
+    overflow-y: scroll;
 }
 
 #text-area{
@@ -155,11 +125,17 @@ body {
     width: 100%;
     height: 100%;
     font-size: 18px;
+    resize: none;
 }
 
 #text-area:hover,
 #text-area:focus{
     outline: none;
+}
+
+.edit-action{
+    border-bottom: 1px solid #ccc;
+    flex: 1;
 }
 
 

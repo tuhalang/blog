@@ -28,10 +28,13 @@
         <ul class="dropdown">
             <li><a href="#">Home</a></li>
             <li><a href="#">Categories</a></li>
-            <li><a href="#">Login</a></li>
+            <li id="login"><a href="#">Login</a></li>
             <li><a href="#">Logout</a></li>
         </ul>
     </nav>
+</div>
+<div id="btn-edit-auth" onclick="return onEdit('<c:url value="/edit"/>')">
+    <i class="fas fa-pencil-alt"></i>
 </div>
 <div id="welcome">
     <div class="banner-image">
@@ -87,6 +90,8 @@
         </c:forEach>
     </div>
 </div>
+<jsp:include page="common/modal_auth.jsp"></jsp:include>
 <jsp:include page="common/footer.jsp"></jsp:include>
+<script src="<c:url value="/static/js/home.js"/>"></script>
 </body>
 </html>
