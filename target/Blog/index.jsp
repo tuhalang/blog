@@ -2,6 +2,6 @@
          pageEncoding="UTF-8" %>
 <html>
 <body>
-<jsp:forward page="home"></jsp:forward>
+<jsp:forward page="edit"></jsp:forward>
 </body>
 </html>
