@@ -14,7 +14,7 @@
     </div>
     <div class="menu">
         <div><a href="<c:url value="/home"/>">Home</a></div>
-        <div><a href="#">Categories</a></div>
+        <div><a href="<c:url value="/category"/>">Categories</a></div>
         <div class="dropdown">
             <a href="#"><i class="fas fa-user-circle"></i></a>
             <div class="dropdown-content">
