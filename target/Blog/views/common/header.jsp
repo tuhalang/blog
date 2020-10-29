@@ -10,11 +10,11 @@
 <link rel="stylesheet" href="<c:url value="/static/css/common/header.css"/>"/>
 <div class="navbar">
     <div id="logo">
-        <img src="<c:url value="/static/img/fbfe575.svg"/>" alt="Lazzy"/>
+        <img src="<c:url value="/static/img/logo.png"/>" alt="Lazzy"/>
     </div>
     <div class="menu">
         <div><a href="<c:url value="/home"/>">Home</a></div>
-        <div><a href="<c:url value="/category"/>">Categories</a></div>
+        <div><a href="<c:url value="/categories"/>">Categories</a></div>
         <div class="dropdown">
             <a href="#"><i class="fas fa-user-circle"></i></a>
             <div class="dropdown-content">

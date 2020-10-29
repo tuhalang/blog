@@ -19,7 +19,7 @@
 <body>
 <div class="navbar">
     <div id="logo">
-        <img src="<c:url value="/static/img/fbfe575.svg"/>" alt="Lazzy"/>
+        <img src="<c:url value="/static/img/logo.png"/>" alt="Lazzy"/>
     </div>
     <nav>
         <div class="icon-menu">
@@ -27,7 +27,7 @@
         </div>
         <ul class="dropdown">
             <li><a href="#">Home</a></li>
-            <li><a href="#">Categories</a></li>
+            <li><a href="<c:url value="/category"/>">Categories</a></li>
             <li id="login"><a href="#">Login</a></li>
             <li><a href="#">Logout</a></li>
         </ul>

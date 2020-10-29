@@ -30,7 +30,11 @@
         <div class="divider-2"><i class="fas fa-chevron-down"></i></div>
         <div class="divider-1"></div>
     </div>
-    <div class="list-posts"></div>
+    <div class="list-posts">
+        <c:forEach var="i" begin="1" end="5">
+            <jsp:include page="common/post_categ.jsp"></jsp:include>
+        </c:forEach>
+    </div>
 </div>
 </body>
 </html>

@@ -32,7 +32,7 @@
     </div>
     <div class="list-posts">
         <c:forEach var="i" begin="1" end="5">
-
+            <jsp:include page="common/post_categ.jsp"></jsp:include>
         </c:forEach>
     </div>
 </div>
