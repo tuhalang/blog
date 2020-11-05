@@ -1,0 +1,61 @@
+.post-categ {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.post-categ img {
+    height: 46px;
+    width: 46px;
+    object-fit: cover;
+    border-radius: 23px;
+}
+
+.sub-info-post {
+    margin: 0 8px;
+}
+
+.sub-info-post .title {
+    font-size: 26px;
+    font-weight: bold;
+    height: 30px;
+    overflow: hidden;
+    display: inline-block;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    color: #00b5ad;
+}
+
+.sub-info-post .list-tags {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.sub-info-post .list-tags span {
+    padding: 5px 8px;
+    background-color: #cccccc;
+    border-radius: 5px;
+    margin: 3px 5px;
+    font-size: 13px;
+    color: rgba(0,0,0,0.8);
+}
+
+.sub-content{
+    font-size: 14px;
+    height: 36px;
+    overflow: hidden;
+    display: inline-block;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+}
+.author-createAt span{
+    color: #00b5ad;
+}
+
+.author-createAt{
+    font-size: 12px;
+}

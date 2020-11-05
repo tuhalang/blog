@@ -1,0 +1,110 @@
+body {
+    margin: 0;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+}
+
+#content-main {
+    width: 60%;
+}
+
+#content-main img{
+    max-width: 100%;
+    resize: horizontal;
+    margin: 25px 0 20px 0;
+}
+#content-main pre{
+    max-width: 100%;
+    white-space: pre-wrap;       /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;
+}
+
+#info-post {
+    width: 28%;
+    padding: 0 14px 0 14px;
+    margin: 25px 0 20px 0;
+    border-left: 1px solid #ccc;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.action-post{
+    display: flex;
+    flex-direction: column;
+    float: right;
+}
+
+.action-post i{
+    box-shadow: 2px 4px 8px rgba(0,0,0,0.5);
+    height: 38px;
+    width: 38px;
+    font-size: 24px;
+    border-radius: 19px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 10px 0;
+    color: red;
+}
+
+.fill-space{
+    padding-top: 50px;
+    padding-right: 15px;
+    width: 8%;
+    justify-content: flex-end;
+}
+
+#info-author{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 80%;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+#info-author i{
+    font-size: 40px;
+    margin-right: 8px;
+}
+
+#info-author div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#info-author span:nth-child(1){
+    font-size: 24px;
+    color: #00b5ad;
+}
+
+#table-of-content{
+    margin: 30px 0;
+}
+
+#table-of-content span:nth-child(1){
+    font-size: 24px;
+    color: #00b5ad;
+}
+
+@media only screen and (max-width: 968px) {
+    #info-post {
+        display: none;
+    }
+    #content-main{
+        width: 80%;
+    }
+}

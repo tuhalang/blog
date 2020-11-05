@@ -1,0 +1,31 @@
+.tag-detail {
+    width: 360px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    margin: 12px;
+}
+
+.tag-detail img{
+    width: 100px;
+    margin-right: 10px;
+}
+
+.tag-detail .amount-post{
+    color: rgba(0,0,0,0.3);
+}
+.tag-detail .amount-post span {
+    color: rgba(0,0,0,0.6);
+    font-weight: 650;
+}
+
+.tag-detail .name-tags{
+    font-weight: 550;
+    font-size: 20px;
+}
+
+.tag-detail .name-tags i{
+    font-size: 16px;
+    color: #fe9e40;
+}
