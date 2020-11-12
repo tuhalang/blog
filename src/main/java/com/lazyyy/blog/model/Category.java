@@ -13,16 +13,25 @@ import java.util.Date;
  */
 public class Category {
     
-    private Long id;
+    private Integer id;
     private String name;
     private String code;
     private Date createdAt;
+    private Integer numOfPosts;
 
-    public Long getId() {
+    public Integer getNumOfPosts() {
+        return numOfPosts;
+    }
+
+    public void setNumOfPosts(Integer numOfPosts) {
+        this.numOfPosts = numOfPosts;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -43,7 +43,7 @@
     <div class="title-welcome">
         <div class="content-welcome">
             <h1>Welcome to</h1>
-            <h1 class="h0">Lazzzy</h1>
+            <h1 class="h0">Lazyyy</h1>
             <div class="search-bar">
                 <i class="fab fa-searchengin"></i>
                 <input placeholder="Search here"/>
@@ -75,17 +75,20 @@
 </div>
 <div class="container">
     <div class="list-post">
-        <c:forEach var="i" begin="1" end="5">
-            <jsp:include page="common/sub_post.jsp"></jsp:include>
+        <c:forEach items="${latestPost}" var="post">
+            <jsp:include page="common/sub_post.jsp">
+                <jsp:param name="title" value="${post.getTitle()}"/>
+                <jsp:param name="summary" value="${post.getSummary()}"/>
+            </jsp:include>
         </c:forEach>
     </div>
     <div class="list-categories">
         <input placeholder="Tìm kiếm chủ đề" id = 'search-categ'/>
         <h2>Categories</h2>
-        <c:forEach var="i" begin="1" end="5">
+        <c:forEach items="${categories}" var="category">
             <div class="sub_categ">
-                <label>Fashion</label>
-                <p class="amount-post">(6)</p>
+                <label>${category.getName()}</label>
+                <p class="amount-post">(${category.getNumOfPosts()})</p>
             </div>
         </c:forEach>
     </div>

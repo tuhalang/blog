@@ -12,9 +12,9 @@ import java.util.Date;
  * @author hungpv
  */
 public class Post {
-    private Long id;
-    private Long userId;
-    private Long categoryId;
+    private Integer id;
+    private Integer userId;
+    private Integer categoryId;
     private String title;
     private String thumbnail;
     private String summary;
@@ -22,27 +22,27 @@ public class Post {
     private String image;
     private Date createdAt;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
-    public Long getCategoryId() {
+    public Integer getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(Long categoryId) {
+    public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
     }
 

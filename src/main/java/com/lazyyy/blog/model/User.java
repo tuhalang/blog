@@ -12,7 +12,7 @@ import java.util.Date;
  * @author hungpv
  */
 public class User {
-    private Long id;
+    private Integer id;
     private String username;
     private String password;
     private String avatar;
@@ -22,7 +22,7 @@ public class User {
 
     public User(){}
 
-    public User(Long id, String password, String avatar, Boolean status, String role, Date createdAt) {
+    public User(Integer id, String password, String avatar, Boolean status, String role, Date createdAt) {
         this.id = id;
         this.password = password;
         this.avatar = avatar;
@@ -31,7 +31,7 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    public User(Long id, String username, String password, String avatar, Boolean status, String role, Date createdAt) {
+    public User(Integer id, String username, String password, String avatar, Boolean status, String role, Date createdAt) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -42,11 +42,11 @@ public class User {
     }
     
     
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

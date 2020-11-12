@@ -16,9 +16,8 @@
         </div>
     </div>
     <div class="post-description">
-        <div class="title-des">Xây dựng ứng dụng realtime theo dõi nhiệt độ, độ ẩm, ánh sáng sử dụng Firebase Phần I</div>
-        <div class="subcontent-des">Đây là bài viết khởi đầu cho chuỗi bài viết về dự án: *xây dựng ứng dụng theo dõi nhiệt độ, độ ẩm, ánh sáng sử dụng Firebase*
-            Cách tạo project và kết nối Firebase và Arduino tôi đã viết trong bài viết: </div>
+        <div class="title-des">${param.title}</div>
+        <div class="subcontent-des">${param.summary}</div>
         <div class="create-at-des">Aug,2020 - 2 min read</div>
     </div>
 </div>

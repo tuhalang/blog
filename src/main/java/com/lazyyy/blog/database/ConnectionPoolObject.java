@@ -22,7 +22,7 @@ public class ConnectionPoolObject {
     
     public ConnectionPoolObject(Properties pro){
         this.pro = pro;
-        this.id = pro.getProperty("dbName");
+        this.id = pro.getProperty("DB_NAME");
     }
     
     public DataSource createConnectionPool() throws Exception {
@@ -33,20 +33,21 @@ public class ConnectionPoolObject {
         }else{
             throw new Exception("URL not found !");
         }
-        
-        
+
         if(this.pro.getProperty("USERNAME") != null){
             config.setUsername(this.pro.getProperty("USERNAME"));
         }
         if(this.pro.getProperty("PASSWORD") != null){
             config.setPassword(this.pro.getProperty("PASSWORD"));
         }
-        if(this.pro.getProperty("PASSWORD") != null){
-            config.setDriverClassName(this.pro.getProperty("PASSWORD"));
+        if(this.pro.getProperty("DRIVER_CLASS_NAME") != null){
+            config.setDriverClassName(this.pro.getProperty("DRIVER_CLASS_NAME"));
         }
         if(this.pro.getProperty("TEST_SQL") != null){
             config.setConnectionTestQuery(this.pro.getProperty("TEST_SQL"));
         }
+
+
         
         HikariDataSource hds = new HikariDataSource(config);
         return hds;

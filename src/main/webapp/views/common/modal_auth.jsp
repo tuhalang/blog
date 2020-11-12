@@ -23,16 +23,16 @@
                 <div class="fill-space"></div>
             </div>
 
-            <form id="login-form" class="tabcontent">
+            <form id="login-form" class="tabcontent" method="POST" action="<c:url value="/auth/signIn"/>">
                 <div class="input-auth data uname">
                     <div>Tên đăng nhập</div>
-                    <input id="input-uname" placeholder="Nhập tên đăng nhập"
+                    <input id="input-uname" placeholder="Nhập tên đăng nhập" name="uname"
                            pattern="^(?=.{6,32}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required
                            title="Tên đăng nhập dài từ 6 đến 32 kí tự và không chứa kí tự đặc biệt"/>
                 </div>
                 <div class="input-auth data pass">
                     <div>Mật khẩu</div>
-                    <input id="input-pass" placeholder="Mật khẩu từ 6 đến 32 kí tự" type="password"
+                    <input id="input-pass" placeholder="Mật khẩu từ 6 đến 32 kí tự" type="password" name="pwd"
                            pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,32}$" required
                            title="Phải chứa ít nhất một số và một chữ cái viết hoa và viết thường và có từ 6 đến 32 ký tự"/>
                 </div>
@@ -42,21 +42,21 @@
                 </div>
             </form>
 
-            <form id="register-form" class="tabcontent" action="#" onsubmit="return onRegister()">
+            <form id="register-form" class="tabcontent" action="<c:url value="/auth/signUp"/>" method="post" >
                 <div class="input-auth data uname">
                     <div>Tên đăng nhập</div>
-                    <input id="input-rg-uname" placeholder="Nhập tên đăng nhập"
+                    <input id="input-rg-uname" placeholder="Nhập tên đăng nhập" name="uname"
                            pattern="^(?=.{6,32}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required
                     title="Tên đăng nhập dài từ 6 đến 32 kí tự và không chứa kí tự đặc biệt"/>
                 </div>
-                <div class="input-auth data uname">
-                    <div>Email</div>
-                    <input id="input-rg-email" placeholder="Nhập email" type="email" required/>
-                </div>
+<%--                <div class="input-auth data uname">--%>
+<%--                    <div>Email</div>--%>
+<%--                    <input id="input-rg-email" placeholder="Nhập email" type="email" name="email" required/>--%>
+<%--                </div>--%>
                 <div class="input-auth data pass">
                     <div>Mật khẩu</div>
                     <input id="input-rg-pass" placeholder="Mật khẩu từ 6 đến 32 kí tự" type="password"
-                           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,32}$" required
+                           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,32}$" required name="pwd"
                            title="Phải chứa ít nhất một số và một chữ cái viết hoa và viết thường và có từ 6 đến 32 ký tự"/>
                 </div>
                 <div class="input-auth data uname">

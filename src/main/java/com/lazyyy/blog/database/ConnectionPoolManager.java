@@ -15,6 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import javax.sql.DataSource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import sun.audio.ContinuousAudioDataStream;
 
 /**
  *
@@ -29,11 +30,11 @@ public class ConnectionPoolManager {
 
     public synchronized static void loadConfig(String path) {
         try {
-            InputStream is = new FileInputStream(path);
+            InputStream is = new ConnectionPoolManager().getClass().getClassLoader().getResourceAsStream(path);
             Properties pro = new Properties();
             pro.load(is);
             
-            String dbName = pro.getProperty("name");
+            String dbName = pro.getProperty("DB_NAME");
             
             ConnectionPoolObject obj = new ConnectionPoolObject(pro);
             

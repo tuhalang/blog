@@ -21,8 +21,8 @@ import org.apache.logging.log4j.Logger;
 public class BaseDao {
     
     private static final Logger LOGGER = LogManager.getLogger(BaseDao.class);
-    private static final String DEFAULT_PATH_CONFIG = "";
-    private static final String DEFAULT_DB_NAME = "";
+    private static final String DEFAULT_PATH_CONFIG = "database.properties";
+    private static final String DEFAULT_DB_NAME = "postgres";
     
     protected Connection getDefaultConnection(){
         Connection conn = ConnectionPoolManager.getConnection(DEFAULT_DB_NAME);

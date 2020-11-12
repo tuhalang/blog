@@ -10,14 +10,14 @@ package com.lazyyy.blog.model;
  * @author hungpv
  */
 public class Tag {
-    private Long id;
+    private Integer id;
     private String name;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

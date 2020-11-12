@@ -12,25 +12,25 @@ import java.util.Date;
  * @author hungpv
  */
 public class Comment {
-    private Long id;
-    private Long postId;
+    private Integer id;
+    private Integer postId;
     private String owner;
     private String content;
     private Date createdAt;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getPostId() {
+    public Integer getPostId() {
         return postId;
     }
 
-    public void setPostId(Long postId) {
+    public void setPostId(Integer postId) {
         this.postId = postId;
     }
 

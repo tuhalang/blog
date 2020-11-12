@@ -39,6 +39,29 @@ public class UserDao extends BaseDao{
         }
         return userDao;
     }
+
+    public boolean isExists(String username){
+        String sql = "select * from users a where a.username = ?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        User user = null;
+        try {
+            conn = getDefaultConnection();
+            ps = conn.prepareStatement(sql);
+            ps.setQueryTimeout(120);
+            ps.setString(1, username);
+            rs = ps.executeQuery();
+            return rs.next();
+        } catch (SQLException ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            return false;
+        } finally {
+            closeObject(rs);
+            closeObject(ps);
+            closeObject(conn);
+        }
+    }
     
     /**
      * find user by username
@@ -57,9 +80,10 @@ public class UserDao extends BaseDao{
             conn = getDefaultConnection();
             ps = conn.prepareStatement(sql);
             ps.setQueryTimeout(120);
+            ps.setString(1, username);
             rs = ps.executeQuery();
             if(rs.next()){
-                Long id = rs.getLong("id");
+                Integer id = rs.getInt("id");
                 String password = rs.getString("password");
                 String avatar = rs.getString("avatar");
                 Boolean status = rs.getBoolean("status");
@@ -91,7 +115,7 @@ public class UserDao extends BaseDao{
         if(isEncryptPass){
             user.setPassword(BCrypt.hashpw(user.getPassword(), BCrypt.gensalt(10)));
         }
-        String sql = "insert into users values(?,?,?,?)";
+        String sql = "insert into users(username, password, avatar, status, role) values(?,?,?,?,?)";
         Connection conn = null;
         PreparedStatement ps = null;
         try{
@@ -106,6 +130,7 @@ public class UserDao extends BaseDao{
                 ps.setNull(3, Types.VARCHAR);
             }
             ps.setBoolean(4, user.getStatus());
+            ps.setString(5, user.getRole());
             ps.setQueryTimeout(120);
             ps.executeUpdate();
             conn.commit();
