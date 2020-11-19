@@ -18,16 +18,21 @@ public class SignInController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username = request.getParameter("uname");
         String pwd = request.getParameter("pwd");
+        System.out.println(username+pwd);
+        response.getWriter().print("200");
+        response.getWriter().flush();
 
-        boolean isAuth = UserService.getInstance().login(username, pwd);
-
-        if(isAuth){
-            SessionUtils.getInstance().putValue(request,"USERNAME", username);
-            request.getRequestDispatcher("/views/HomeScreen.jsp").forward(request,response);
-        }else{
-            request.getRequestDispatcher("/views/HomeScreen.jsp").forward(request,response);
-        }
-
-
+//        System.out.println("successsaaaaa");
+//
+//        boolean isAuth = UserService.getInstance().login(username, pwd);
+//
+//        if(isAuth){
+//            SessionUtils.getInstance().putValue(request,"USERNAME", username);
+//            response.getWriter().print("200");
+//            response.getWriter().flush();
+//        }else{
+//            response.getWriter().print("404");
+//            response.getWriter().flush();
+//        }
     }
 }

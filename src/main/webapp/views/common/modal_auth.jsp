@@ -23,7 +23,7 @@
                 <div class="fill-space"></div>
             </div>
 
-            <form id="login-form" class="tabcontent" method="POST" action="<c:url value="/auth/signIn"/>">
+            <form id="login-form" class="tabcontent" onsubmit="login(this)">
                 <div class="input-auth data uname">
                     <div>Tên đăng nhập</div>
                     <input id="input-uname" placeholder="Nhập tên đăng nhập" name="uname"
@@ -42,7 +42,7 @@
                 </div>
             </form>
 
-            <form id="register-form" class="tabcontent" action="<c:url value="/auth/signUp"/>" method="post" >
+            <form id="register-form" class="tabcontent">
                 <div class="input-auth data uname">
                     <div>Tên đăng nhập</div>
                     <input id="input-rg-uname" placeholder="Nhập tên đăng nhập" name="uname"

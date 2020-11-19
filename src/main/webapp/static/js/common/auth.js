@@ -12,19 +12,34 @@ function changeTabAuth(evt, authAction) {
     evt.currentTarget.className += " active";
 }
 
-function onLogin() {
-
-}
 
 function onRegister() {
     var repass = document.getElementById('input-rg-repass').value;
     var pass = document.getElementById('input-rg-pass').value;
-    console.log(repass+pass)
+    console.log(repass + pass)
     if (repass !== pass) {
         alert("Xác nhận mật khẩu không đúng!")
         return false;
     }
     return true;
+}
+
+function login(self) {
+    var http = new XMLHttpRequest();
+    var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/auth/signIn";
+    var params = `pwd=${self.pwd.value}&uname=${self.uname.value}`
+    http.open('POST', url, true);
+
+//Send the proper header information along with the request
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    http.onreadystatechange = function() {//Call a function when the state changes.
+        if(http.readyState == 4 && http.status == 200) {
+            alert(http.responseText);
+        }
+    }
+    http.send(params);
+    return false;
 }
 
 document.getElementById("login-form").style.display = "block";
