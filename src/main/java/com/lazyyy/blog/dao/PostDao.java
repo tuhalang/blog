@@ -7,7 +7,7 @@ package com.lazyyy.blog.dao;
 
 import com.lazyyy.blog.model.Category;
 import com.lazyyy.blog.model.Post;
-import javafx.geometry.Pos;
+//import javafx.geometry.Pos;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

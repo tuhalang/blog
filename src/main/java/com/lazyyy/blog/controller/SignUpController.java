@@ -19,8 +19,7 @@ public class SignUpController extends HttpServlet {
 
         String username = request.getParameter("uname");
         String pwd = request.getParameter("pwd");
-        //String email = request.getParameter("email");
-
+        System.out.println(username);
         User user = new User();
         user.setUsername(username);
         user.setPassword(pwd);
@@ -28,12 +27,14 @@ public class SignUpController extends HttpServlet {
         user.setStatus(true);
 
         boolean register = UserService.getInstance().register(user);
-        if(register){
+        if (register) {
             request.setAttribute("IS_REGISTER_SUCCESS", true);
-            request.getRequestDispatcher("/views/HomeScreen.jsp").forward(request,response);
-        }else{
+            response.getWriter().print("200");
+            response.getWriter().flush();
+        } else {
             request.setAttribute("IS_REGISTER_SUCCESS", false);
-            request.getRequestDispatcher("/views/HomeScreen.jsp").forward(request,response);
+            response.getWriter().print("404");
+            response.getWriter().flush();
         }
 
 

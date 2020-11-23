@@ -39,6 +39,28 @@ function login(self) {
         }
     }
     http.send(params);
+    return true;
+}
+
+function register(self) {
+    if (self.pwd.value != self.repwd.value){
+        alert("Xác nhận mật khẩu sai")
+        return true;
+    }
+    var http = new XMLHttpRequest();
+    var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/auth/signUp";
+    var params = `pwd=${self.pwd.value}&uname=${self.uname.value}`
+    http.open('POST', url, true);
+
+//Send the proper header information along with the request
+    http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    http.onreadystatechange = function() {//Call a function when the state changes.
+        if(http.readyState == 4 && http.status == 200) {
+            alert(http.responseText);
+        }
+    }
+    http.send(params);
     return false;
 }
 

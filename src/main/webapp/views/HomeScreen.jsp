@@ -29,7 +29,14 @@
             <li><a href="#">Home</a></li>
             <li><a href="<c:url value="/category"/>">Categories</a></li>
             <li id="login"><a href="#">Login</a></li>
-            <li><a href="#">Logout</a></li>
+            <%
+                String name = (String) session.getAttribute("USERNAME");
+                System.out.println(name);
+            %>
+            <c:if test="${USERNAME!=null}">
+                <li><a href="#">Logout</a></li>
+                <li><a href="#">Quản lí tài khoản</a></li>
+            </c:if>
         </ul>
     </nav>
 </div>
@@ -83,7 +90,7 @@
         </c:forEach>
     </div>
     <div class="list-categories">
-        <input placeholder="Tìm kiếm chủ đề" id = 'search-categ'/>
+        <input placeholder="Tìm kiếm chủ đề" id='search-categ'/>
         <h2>Categories</h2>
         <c:forEach items="${categories}" var="category">
             <div class="sub_categ">

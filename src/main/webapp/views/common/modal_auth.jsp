@@ -42,7 +42,7 @@
                 </div>
             </form>
 
-            <form id="register-form" class="tabcontent">
+            <form id="register-form" class="tabcontent" onsubmit="register(this)">
                 <div class="input-auth data uname">
                     <div>Tên đăng nhập</div>
                     <input id="input-rg-uname" placeholder="Nhập tên đăng nhập" name="uname"
@@ -62,7 +62,7 @@
                 <div class="input-auth data uname">
                     <div>Xác nhận mật khẩu</div>
                     <input id="input-rg-repass" placeholder="Nhập lại mật khẩu" type="password"
-                           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,32}$" required/>
+                           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,32}$" required name="repwd"/>
                 </div>
                 <div class="input-auth">
                     <div></div>
