@@ -27,18 +27,22 @@ function onRegister() {
 function login(self) {
     var http = new XMLHttpRequest();
     var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/auth/signIn";
-    var params = `pwd=${self.pwd.value}&uname=${self.uname.value}`
+    var data = new FormData();
+    data.append("pwd",self.pwd.value)
+    data.append("uname",self.uname.value)
     http.open('POST', url, true);
 
 //Send the proper header information along with the request
     http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
     http.onreadystatechange = function() {//Call a function when the state changes.
-        if(http.readyState == 4 && http.status == 200) {
-            alert(http.responseText);
+        if(http.status == 200) {
+            if (http.responseText == "200") {
+                location.reload()
+            }else alert("Tai khoan hoac mat khau sai!")
         }
     }
-    http.send(params);
+    http.send(data);
     return true;
 }
 
