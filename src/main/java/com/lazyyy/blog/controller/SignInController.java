@@ -1,5 +1,6 @@
 package com.lazyyy.blog.controller;
 
+import com.lazyyy.blog.model.User;
 import com.lazyyy.blog.service.UserService;
 import com.lazyyy.blog.utils.SessionUtils;
 
@@ -28,9 +29,10 @@ public class SignInController extends HttpServlet {
 //        System.out.println(formData);
         String username = request.getParameter("uname");
         String pwd = request.getParameter("pwd");
-        boolean isAuth = UserService.getInstance().login(username, pwd);
-        if(isAuth){
-            SessionUtils.getInstance().putValue(request,"USERNAME", username);
+        User user = UserService.getInstance().login(username, pwd);
+        if(user != null){
+            SessionUtils.getInstance().putValue(request,"USERNAME", user.getUsername());
+            SessionUtils.getInstance().putValue(request,"USER_ID", user.getId());
             response.getWriter().print(200);
             response.getWriter().flush();
         }else{

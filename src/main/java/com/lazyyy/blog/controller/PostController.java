@@ -22,13 +22,13 @@ public class PostController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String content = req.getParameter("content");
 //        String pwd = req.getParameter("pwd");
-        PostService.getInstance().
-        if(isAuth){
-            resp.getWriter().print(200);
-            resp.getWriter().flush();
-        }else{
-            resp.getWriter().print(404);
-            resp.getWriter().flush();
-        }
+//        PostService.getInstance().
+//        if(isAuth){
+//            resp.getWriter().print(200);
+//            resp.getWriter().flush();
+//        }else{
+//            resp.getWriter().print(404);
+//            resp.getWriter().flush();
+//        }
     }
 }

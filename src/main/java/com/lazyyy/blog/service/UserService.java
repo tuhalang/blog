@@ -25,12 +25,12 @@ public class UserService {
         return userService;
     }
 
-    public boolean login(String uname, String pwd){
+    public User login(String uname, String pwd){
         User user = UserDao.getInstance().findUserByUsername(uname);
         if(BCrypt.checkpw(pwd, user.getPassword())){
-            return true;
+            return user;
         }
-        return false;
+        return null;
     }
 
     public boolean register(User user) {

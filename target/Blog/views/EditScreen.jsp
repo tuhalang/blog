@@ -39,7 +39,7 @@
         </div>
     </div>
     <div id="save-post">
-        <input type="submit" value="Đăng bài" class="save-post-btn">
+        <input type="submit" value="Đăng bài" class="save-post-btn" onclick="return savePost();">
     </div>
 </div>
 
