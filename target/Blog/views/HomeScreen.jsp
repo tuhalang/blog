@@ -11,6 +11,7 @@
 <html>
 <head>
     <title>Home</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1"/>
     <link rel="stylesheet" href="<c:url value="/static/css/home.css"/>"/>
     <link rel="stylesheet" href="<c:url value="/static/css/fontawesome-free-5.15.1-web/css/all.css"/>"/>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Roboto:ital@1&display=swap"
@@ -28,13 +29,11 @@
         <ul class="dropdown">
             <li><a href="#">Home</a></li>
             <li><a href="<c:url value="/category"/>">Categories</a></li>
-            <li id="login"><a href="#">Login</a></li>
-            <%
-                String name = (String) session.getAttribute("USERNAME");
-                System.out.println(name);
-            %>
+            <c:if test="${USERNAME==null}">
+                <li id="login" onclick="return showLogin();"><a href="#">Login</a></li>
+            </c:if>
             <c:if test="${USERNAME!=null}">
-                <li><a href="#">Logout</a></li>
+                <li><a href="#" onclick="return logout();">Logout</a></li>
                 <li><a href="#">Quản lí tài khoản</a></li>
             </c:if>
         </ul>

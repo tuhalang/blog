@@ -5,6 +5,7 @@ import com.lazyyy.blog.service.UserService;
 import com.lazyyy.blog.utils.SessionUtils;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,11 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/auth/signUp")
+@MultipartConfig
 public class SignUpController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         String username = request.getParameter("uname");
         String pwd = request.getParameter("pwd");
         System.out.println(username);

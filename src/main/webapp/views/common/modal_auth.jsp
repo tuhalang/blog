@@ -23,7 +23,7 @@
                 <div class="fill-space"></div>
             </div>
 
-            <form id="login-form" class="tabcontent" onsubmit="login(this)">
+            <form id="login-form" class="tabcontent" onsubmit="return login(this)" action="auth/signIn" method="post">
                 <div class="input-auth data uname">
                     <div>Tên đăng nhập</div>
                     <input id="input-uname" placeholder="Nhập tên đăng nhập" name="uname"
@@ -42,7 +42,7 @@
                 </div>
             </form>
 
-            <form id="register-form" class="tabcontent" onsubmit="register(this)">
+            <form id="register-form" class="tabcontent" onsubmit="return register(this)" method="post" action="auth/signUp">
                 <div class="input-auth data uname">
                     <div>Tên đăng nhập</div>
                     <input id="input-rg-uname" placeholder="Nhập tên đăng nhập" name="uname"

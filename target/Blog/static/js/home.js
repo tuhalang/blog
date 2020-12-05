@@ -1,14 +1,11 @@
 //////////////////////////////////////////////////////////////modal
 var modal = document.getElementById("modal-login");
 
-// Get the button that opens the modal
-var btn = document.getElementById("login");
-
 // Get the <span> element that closes the modal
 // var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
-btn.onclick = function() {
+function showLogin() {
     modal.style.display = "block";
 }
 //
