@@ -30,4 +30,9 @@ public class PostService {
     public List<Post> getLatestPosts(int offset, int limit){
         return PostDao.getInstance().getTopPosts(offset, limit);
     }
+
+    public void savePost(Post post){
+        PostDao.getInstance().save(post);
+    }
+
 }
