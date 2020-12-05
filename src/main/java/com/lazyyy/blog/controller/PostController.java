@@ -1,5 +1,9 @@
 package com.lazyyy.blog.controller;
 
+import com.lazyyy.blog.service.PostService;
+import com.lazyyy.blog.service.UserService;
+import com.lazyyy.blog.utils.SessionUtils;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,5 +16,19 @@ public class PostController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         request.getRequestDispatcher("/views/PostInstance.jsp").forward(request,response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String content = req.getParameter("content");
+//        String pwd = req.getParameter("pwd");
+        PostService.getInstance().
+        if(isAuth){
+            resp.getWriter().print(200);
+            resp.getWriter().flush();
+        }else{
+            resp.getWriter().print(404);
+            resp.getWriter().flush();
+        }
     }
 }

@@ -37,7 +37,5 @@ public class SignUpController extends HttpServlet {
             response.getWriter().print("404");
             response.getWriter().flush();
         }
-
-
     }
 }

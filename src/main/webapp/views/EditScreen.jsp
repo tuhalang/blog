@@ -38,6 +38,9 @@
         <div id="preview" class="tabcontent">
         </div>
     </div>
+    <div id="save-post">
+        <input type="submit" value="Đăng bài" class="save-post-btn" onclick="return savePost();">
+    </div>
 </div>
 
 </div>

@@ -19,4 +19,19 @@ async function onPreview() {
     document.getElementById("preview").innerHTML = mdHtml.render(document.getElementById("text-area").value)
 }
 
+function savePost(){
+    var s = document.getElementById('text-area').value
+    alert(s)
+    var data = new FormData();
+    data.append("content",s)
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        alert("Lưu thành công")
+    } // success case
+    xhr.onerror = function () {} // failure case
+    var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/auth/signOut";
+    xhr.open('POST', '/auth/signOut', true);
+    xhr.send(data);
+}
+
 document.getElementById("edit").style.display = "block";
