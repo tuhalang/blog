@@ -189,4 +189,31 @@ public class PostDao extends BaseDao {
             closeObject(rs);
         }
     }
+
+
+    public void save(Post post){
+        String sql = "insert into posts (category_id, content, summary, thumbnail, title, user_id)\n" +
+                "value (?, ?, ?, ?, ?, ?)";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try{
+            conn = getDefaultConnection();
+            conn.setAutoCommit(false);
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, post.getCategoryId());
+            ps.setString(2, post.getContent());
+            ps.setString(3, post.getSummary());
+            ps.setString(4, post.getThumbnail());
+            ps.setString(5, post.getTitle());
+            ps.setInt(6, post.getUserId());
+            ps.executeUpdate();
+            conn.commit();
+        }catch(SQLException ex){
+            LOGGER.error(ex.getMessage(), ex);
+            rollback(conn);
+        }finally{
+            closeObject(ps);
+            closeObject(conn);
+        }
+    }
 }
