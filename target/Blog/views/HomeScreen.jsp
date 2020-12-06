@@ -39,7 +39,7 @@
         </ul>
     </nav>
 </div>
-<div id="btn-edit-auth" onclick="return onEdit('<c:url value="/edit"/>')">
+<div id="btn-edit-auth" onclick="return onEdit('<c:url value="/secure/edit"/>')">
     <i class="fas fa-pencil-alt"></i>
 </div>
 <div id="welcome">

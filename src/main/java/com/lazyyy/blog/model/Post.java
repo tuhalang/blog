@@ -22,6 +22,41 @@ public class Post {
     private String image;
     private Date createdAt;
 
+    public Post() {
+    }
+
+    public Post(Integer id, Integer userId, Integer categoryId, String title, String thumbnail, String summary, String content, String image, Date createdAt) {
+        this.id = id;
+        this.userId = userId;
+        this.categoryId = categoryId;
+        this.title = title;
+        this.thumbnail = thumbnail;
+        this.summary = summary;
+        this.content = content;
+        this.image = image;
+        this.createdAt = createdAt;
+    }
+
+    public Post(Integer userId, Integer categoryId, String title, String thumbnail, String summary, String content, String image, Date createdAt) {
+        this.userId = userId;
+        this.categoryId = categoryId;
+        this.title = title;
+        this.thumbnail = thumbnail;
+        this.summary = summary;
+        this.content = content;
+        this.image = image;
+        this.createdAt = createdAt;
+    }
+
+    public Post(Integer userId, Integer categoryId, String title, String thumbnail, String summary, String content) {
+        this.userId = userId;
+        this.categoryId = categoryId;
+        this.title = title;
+        this.thumbnail = thumbnail;
+        this.summary = summary;
+        this.content = content;
+    }
+
     public Integer getId() {
         return id;
     }

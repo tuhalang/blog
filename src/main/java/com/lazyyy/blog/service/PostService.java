@@ -13,13 +13,14 @@ public class PostService {
     private static PostService postService;
     private static final Object MUTEX = new Object();
 
-    private PostService(){}
+    private PostService() {
+    }
 
 
-    public static PostService getInstance(){
-        if(postService == null){
-            synchronized(MUTEX){
-                if(postService == null){
+    public static PostService getInstance() {
+        if (postService == null) {
+            synchronized (MUTEX) {
+                if (postService == null) {
                     postService = new PostService();
                 }
             }
@@ -27,12 +28,17 @@ public class PostService {
         return postService;
     }
 
-    public List<Post> getLatestPosts(int offset, int limit){
+    public List<Post> getLatestPosts(int offset, int limit) {
         return PostDao.getInstance().getTopPosts(offset, limit);
     }
 
-    public void savePost(Post post){
-        PostDao.getInstance().save(post);
+    public boolean savePost(Post post) {
+        try {
+            PostDao.getInstance().save(post);
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
     }
 
 }

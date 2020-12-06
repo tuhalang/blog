@@ -19,18 +19,30 @@ async function onPreview() {
     document.getElementById("preview").innerHTML = mdHtml.render(document.getElementById("text-area").value)
 }
 
-function savePost(){
-    var s = document.getElementById('text-area').value
-    alert(s)
+function savePost() {
+    var content = document.getElementById('text-area').value
+    var title = document.getElementById('title-edit').value
+    var categoryId = document.getElementById('tag-edit').value
+    alert(categoryId)
     var data = new FormData();
-    data.append("content",s)
+    data.append("content", content)
+    data.append("title", title)
+    data.append("categoryId", categoryId)
     var xhr = new XMLHttpRequest();
     xhr.onload = function () {
-        alert("Lưu thành công")
+        if (xhr.responseText == 200) {
+            alert("Lưu thành công")
+        } else if (xhr.responseText == 500) {
+            alert("Bải viết không hợp lệ")
+        } else if (xhr.responseText == 404){
+            alert("Lưu thất bại, lỗi hệ thống")
+        }
     } // success case
-    xhr.onerror = function () {} // failure case
-    var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/auth/signOut";
-    xhr.open('POST', '/auth/signOut', true);
+    xhr.onerror = function () {
+        alert("Lưu thất bại")
+    } // failure case
+    var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/secure/edit";
+    xhr.open('POST', url, true);
     xhr.send(data);
 }
 
