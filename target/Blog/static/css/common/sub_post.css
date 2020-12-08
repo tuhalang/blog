@@ -9,7 +9,7 @@
     margin: 20px 0 20px 0px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -31,6 +31,7 @@
 }
 
 .post-description {
+    flex: 1;
     padding: 10px;
     height: 90%;
     color: white;

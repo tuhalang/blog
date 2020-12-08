@@ -20,7 +20,7 @@
 <jsp:include page="common/header.jsp"></jsp:include>
 <div id="edit-content">
     <input class="title-edit" id="title-edit" placeholder="Tiêu đề hay gây ấn tượng cho người đọc"/>
-    <input class="tag-edit" id="tag-edit" placeholder="Tag hợp lý giúp người đọc dễ tìm thấy hơn"/>
+    <input class="tag-edit" id="tag-edit" minlength="50" placeholder="Mô tả hợp lý giúp người đọc hiểu về bài viết dễ hơn (nhiều hơn 50 từ)"/>
     <div id="body-edit">
         <div class="tab">
             <div>
