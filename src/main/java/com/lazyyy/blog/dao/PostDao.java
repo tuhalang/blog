@@ -193,7 +193,7 @@ public class PostDao extends BaseDao {
 
     public void save(Post post){
         String sql = "insert into posts (category_id, content, summary, thumbnail, title, user_id)\n" +
-                "value (?, ?, ?, ?, ?, ?)";
+                "values (?, ?, ?, ?, ?, ?)";
         Connection conn = null;
         PreparedStatement ps = null;
         try{
