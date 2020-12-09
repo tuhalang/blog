@@ -45,10 +45,8 @@
 <jsp:include page="common/footer.jsp"></jsp:include>
 <script src="<c:url value="/static/js/markdown-it.js"/>"></script>
 <script>
-    var summary = '${post.getSummary()}';
-    var content = "${post.getContent()}";
-    var image = '${post.getImage()}';
-    var createdAt = '${post.getCreatedAt()}';
+    contentP = `${post.getContent()}`.replaceAll('#','&#35');
+    console.log(contentP)
 </script>
 <script src="<c:url value="/static/js/post_instance.js"/> "></script>
 </body>

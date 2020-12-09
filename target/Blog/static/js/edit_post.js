@@ -21,8 +21,20 @@ async function onPreview() {
 
 function savePost() {
     var content = document.getElementById('text-area').value
+    if (content == '') {
+        alert('Nội dung không được để trống')
+        return
+    }
     var title = document.getElementById('title-edit').value
+    if (title == '') {
+        alert('Tiêu đề không được để trống')
+        return
+    }
     var summary = document.getElementById('sub-content-edit').value
+    if (summary == '') {
+        alert('Mô tả ngắn gọn không được để trống không được để trống')
+        return
+    }
     var categoryId = document.getElementById('category').value
     var data = new FormData();
     data.append("content", content)

@@ -18,6 +18,7 @@ public class HomeController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         int offset = 0;
         int size = 10;
         List<Post> latestPosts = PostService.getInstance().getLatestPosts(offset, size);
