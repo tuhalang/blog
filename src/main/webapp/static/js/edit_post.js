@@ -30,6 +30,7 @@ function savePost() {
     data.append("summary", summary)
     data.append("categoryId", categoryId)
     var xhr = new XMLHttpRequest();
+    xhr.overrideMimeType("charset=utf-8");
     xhr.onload = function () {
         if (xhr.responseText == 200) {
             alert("Lưu thành công")

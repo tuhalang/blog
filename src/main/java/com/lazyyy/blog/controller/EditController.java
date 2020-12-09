@@ -25,11 +25,13 @@ public class EditController extends HttpServlet {
             throws ServletException, IOException {
         List<Category> categories = CategoryService.getInstance().getAllCategory();
         request.setAttribute("categories", categories);
+        request.setCharacterEncoding("UTF-8");
         request.getRequestDispatcher("/views/EditScreen.jsp").forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
         String content = req.getParameter("content");
         String title = req.getParameter("title");
         String summary = req.getParameter("summary");
