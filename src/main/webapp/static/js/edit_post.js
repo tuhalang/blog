@@ -22,11 +22,12 @@ async function onPreview() {
 function savePost() {
     var content = document.getElementById('text-area').value
     var title = document.getElementById('title-edit').value
-    var categoryId = document.getElementById('tag-edit').value
-    alert(categoryId)
+    var summary = document.getElementById('sub-content-edit').value
+    var categoryId = document.getElementById('category').value
     var data = new FormData();
     data.append("content", content)
     data.append("title", title)
+    data.append("summary", summary)
     data.append("categoryId", categoryId)
     var xhr = new XMLHttpRequest();
     xhr.onload = function () {
@@ -34,7 +35,7 @@ function savePost() {
             alert("Lưu thành công")
         } else if (xhr.responseText == 500) {
             alert("Bải viết không hợp lệ")
-        } else if (xhr.responseText == 404){
+        } else if (xhr.responseText == 404) {
             alert("Lưu thất bại, lỗi hệ thống")
         }
     } // success case

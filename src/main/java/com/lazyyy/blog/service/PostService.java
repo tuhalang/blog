@@ -32,6 +32,10 @@ public class PostService {
         return PostDao.getInstance().getTopPosts(offset, limit);
     }
 
+    public Post getPostById(String id) {
+        return PostDao.getInstance().searchById(id);
+    }
+
     public boolean savePost(Post post) {
         try {
             PostDao.getInstance().save(post);

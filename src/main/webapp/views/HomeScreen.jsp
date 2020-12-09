@@ -85,6 +85,7 @@
             <jsp:include page="common/sub_post.jsp">
                 <jsp:param name="title" value="${post.getTitle()}"/>
                 <jsp:param name="summary" value="${post.getSummary()}"/>
+                <jsp:param name="id" value="${post.getId()}"/>
             </jsp:include>
         </c:forEach>
     </div>

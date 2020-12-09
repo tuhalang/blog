@@ -41,4 +41,9 @@ public class UserService {
             return false;
         }
     }
+
+    public User getById(int id){
+        User user = UserDao.getInstance().findUserById(id);
+        return user;
+    }
 }

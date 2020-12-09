@@ -20,7 +20,8 @@
 <jsp:include page="common/header.jsp"></jsp:include>
 <div id="edit-content">
     <input class="title-edit" id="title-edit" placeholder="Tiêu đề hay gây ấn tượng cho người đọc"/>
-    <input class="tag-edit" id="tag-edit" minlength="50" placeholder="Mô tả hợp lý giúp người đọc hiểu về bài viết dễ hơn (nhiều hơn 50 từ)"/>
+    <input class="sub-content-edit" id="sub-content-edit" minlength="50"
+           placeholder="Mô tả hợp lý giúp người đọc hiểu về bài viết dễ hơn (nhiều hơn 50 từ)"/>
     <div id="body-edit">
         <div class="tab">
             <div>
@@ -28,8 +29,15 @@
                 <button class="tablinks active" onclick="changeTab(event, 'edit')">Edit</button>
                 <button class="tablinks" onclick="changeTab(event, 'preview')">Preview</button>
             </div>
-            <div class="edit-action">
-
+            <div class="action">
+                <div class="edit-action">
+                    <div>Chủ đề</div>
+                    <select name="category" class="dropdown-categ" id="category">
+                        <c:forEach items="${categories}" var="category">
+                            <option value="${category.getId()}" class="dropdown-content-categ">${category.getName()}</option>
+                        </c:forEach>
+                    </select>
+                </div>
             </div>
         </div>
         <div id="edit" class="tabcontent">

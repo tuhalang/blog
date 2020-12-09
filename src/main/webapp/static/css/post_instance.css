@@ -11,20 +11,38 @@ body {
     align-items: flex-start;
 }
 
-#content-main {
+.container-post {
     width: 60%;
+    min-height: 80vh;
+    font-family: 'Roboto', sans-serif;
 }
 
-#content-main img{
+.header-post {
+    text-align: left;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #1b1b1b;
+    word-wrap: break-word;
+    word-break: break-word;
+    font-size: 2.5rem;
+    padding: 1rem 0 1rem 0;
+}
+
+#content-main {
+    width: 100%;
+}
+
+#content-main img {
     max-width: 100%;
     resize: horizontal;
     margin: 25px 0 20px 0;
 }
-#content-main pre{
+
+#content-main pre {
     max-width: 100%;
-    white-space: pre-wrap;       /* Since CSS 2.1 */
-    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
-    white-space: -o-pre-wrap;    /* Opera 7 */
+    white-space: pre-wrap; /* Since CSS 2.1 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -o-pre-wrap; /* Opera 7 */
     word-wrap: break-word;
 }
 
@@ -40,14 +58,14 @@ body {
     align-items: flex-start;
 }
 
-.action-post{
+.action-post {
     display: flex;
     flex-direction: column;
     float: right;
 }
 
-.action-post i{
-    box-shadow: 2px 4px 8px rgba(0,0,0,0.5);
+.action-post i {
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
     height: 38px;
     width: 38px;
     font-size: 24px;
@@ -59,14 +77,14 @@ body {
     color: red;
 }
 
-.fill-space{
+.fill-space {
     padding-top: 50px;
     padding-right: 15px;
     width: 8%;
     justify-content: flex-end;
 }
 
-#info-author{
+#info-author {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -75,27 +93,27 @@ body {
     border-bottom: 1px solid #ccc;
 }
 
-#info-author i{
+#info-author i {
     font-size: 40px;
     margin-right: 8px;
 }
 
-#info-author div{
+#info-author div {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-#info-author span:nth-child(1){
+#info-author span:nth-child(1) {
     font-size: 24px;
     color: #00b5ad;
 }
 
-#table-of-content{
+#table-of-content {
     margin: 30px 0;
 }
 
-#table-of-content span:nth-child(1){
+#table-of-content span:nth-child(1) {
     font-size: 24px;
     color: #00b5ad;
 }
@@ -104,7 +122,8 @@ body {
     #info-post {
         display: none;
     }
-    #content-main{
+
+    #content-main {
         width: 80%;
     }
 }

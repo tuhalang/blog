@@ -20,21 +20,21 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
  * @author hungpv
  */
 public class PostDao extends BaseDao {
     private static final Logger LOGGER = LogManager.getLogger(PostDao.class);
     private static PostDao postDao;
     private static final Object MUTEX = new Object();
-    
-    private PostDao(){}
-    
-    
-    public static PostDao getInstance(){
-        if(postDao == null){
-            synchronized(MUTEX){
-                if(postDao == null){
+
+    private PostDao() {
+    }
+
+
+    public static PostDao getInstance() {
+        if (postDao == null) {
+            synchronized (MUTEX) {
+                if (postDao == null) {
                     postDao = new PostDao();
                 }
             }
@@ -42,13 +42,13 @@ public class PostDao extends BaseDao {
         return postDao;
     }
 
-    public List<Post> searchByName(String key, int offset, int limit){
+    public List<Post> searchByName(String key, int offset, int limit) {
         String sql = "select * from posts p where lower(p.title) like concat('%', ?, '%') offset ? limit ?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<Post> posts = new ArrayList<>();
-        try{
+        try {
             conn = getDefaultConnection();
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(sql);
@@ -56,7 +56,7 @@ public class PostDao extends BaseDao {
             ps.setInt(2, offset);
             ps.setInt(3, limit);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
 
                 Integer id = rs.getInt("id");
                 Integer userId = rs.getInt("user_id");
@@ -81,24 +81,72 @@ public class PostDao extends BaseDao {
             }
 
             return posts;
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             LOGGER.error(ex.getMessage(), ex);
             rollback(conn);
             return null;
-        }finally{
+        } finally {
             closeObject(ps);
             closeObject(conn);
             closeObject(rs);
         }
     }
 
-    public List<Post> getPosts(Integer categoryId, int offset, int limit){
+    public Post searchById(String postId) {
+        String sql = "select * from posts p where id = ?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Post> posts = new ArrayList<>();
+        try {
+            conn = getDefaultConnection();
+            conn.setAutoCommit(false);
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, Integer.parseInt(postId));
+            rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Integer id = rs.getInt("id");
+                Integer userId = rs.getInt("user_id");
+                String title = rs.getString("title");
+                String thumbnail = rs.getString("thumbnail");
+                String summary = rs.getString("summary");
+                String content = rs.getString("content");
+                Date createdAt = rs.getDate("created_at");
+                Integer categoryId = rs.getInt("category_id");
+
+                Post post = new Post();
+                post.setId(id);
+                post.setUserId(userId);
+                post.setCategoryId(categoryId);
+                post.setThumbnail(thumbnail);
+                post.setTitle(title);
+                post.setSummary(summary);
+                post.setContent(content);
+                post.setCreatedAt(createdAt);
+
+                posts.add(post);
+            }
+
+            return posts.get(0);
+        } catch (SQLException ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            rollback(conn);
+            return null;
+        } finally {
+            closeObject(ps);
+            closeObject(conn);
+            closeObject(rs);
+        }
+    }
+
+    public List<Post> getPosts(Integer categoryId, int offset, int limit) {
         String sql = "select * from posts p where p.category_id = ? offset ? limit ?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<Post> posts = new ArrayList<>();
-        try{
+        try {
             conn = getDefaultConnection();
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(sql);
@@ -106,7 +154,7 @@ public class PostDao extends BaseDao {
             ps.setInt(2, offset);
             ps.setInt(3, limit);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
 
                 Integer id = rs.getInt("id");
                 Integer userId = rs.getInt("user_id");
@@ -130,31 +178,31 @@ public class PostDao extends BaseDao {
             }
 
             return posts;
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             LOGGER.error(ex.getMessage(), ex);
             rollback(conn);
             return null;
-        }finally{
+        } finally {
             closeObject(ps);
             closeObject(conn);
             closeObject(rs);
         }
     }
 
-    public List<Post> getTopPosts(int offset, int limit){
+    public List<Post> getTopPosts(int offset, int limit) {
         String sql = "select * from posts p order by p.created_at desc offset ? limit ?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<Post> posts = new ArrayList<>();
-        try{
+        try {
             conn = getDefaultConnection();
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(sql);
             ps.setInt(1, offset);
             ps.setInt(2, limit);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
 
                 Integer id = rs.getInt("id");
                 Integer userId = rs.getInt("user_id");
@@ -179,11 +227,11 @@ public class PostDao extends BaseDao {
             }
 
             return posts;
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             LOGGER.error(ex.getMessage(), ex);
             rollback(conn);
             return null;
-        }finally{
+        } finally {
             closeObject(ps);
             closeObject(conn);
             closeObject(rs);
@@ -191,12 +239,12 @@ public class PostDao extends BaseDao {
     }
 
 
-    public void save(Post post){
+    public void save(Post post) {
         String sql = "insert into posts (category_id, content, summary, thumbnail, title, user_id)\n" +
                 "values (?, ?, ?, ?, ?, ?)";
         Connection conn = null;
         PreparedStatement ps = null;
-        try{
+        try {
             conn = getDefaultConnection();
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(sql);
@@ -208,10 +256,10 @@ public class PostDao extends BaseDao {
             ps.setInt(6, post.getUserId());
             ps.executeUpdate();
             conn.commit();
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             LOGGER.error(ex.getMessage(), ex);
             rollback(conn);
-        }finally{
+        } finally {
             closeObject(ps);
             closeObject(conn);
         }
