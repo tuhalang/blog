@@ -13,13 +13,14 @@ public class CategoryService {
     private static CategoryService categoryService;
     private static final Object MUTEX = new Object();
 
-    private CategoryService(){}
+    private CategoryService() {
+    }
 
 
-    public static CategoryService getInstance(){
-        if(categoryService == null){
-            synchronized(MUTEX){
-                if(categoryService == null){
+    public static CategoryService getInstance() {
+        if (categoryService == null) {
+            synchronized (MUTEX) {
+                if (categoryService == null) {
                     categoryService = new CategoryService();
                 }
             }
@@ -27,7 +28,11 @@ public class CategoryService {
         return categoryService;
     }
 
-    public List<Category> getAllCategory(){
+    public List<Category> getAllCategory() {
         return CategoryDao.getInstance().findAll();
+    }
+
+    public Category getById(int id) {
+        return CategoryDao.getInstance().findById(id);
     }
 }

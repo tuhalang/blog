@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>]
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Post</title>
@@ -39,14 +39,14 @@
         </div>
         <div id="table-of-content">
             <span>Mục lục</span>
+            <div id="toc"></div>
         </div>
     </div>
 </div>
 <jsp:include page="common/footer.jsp"></jsp:include>
 <script src="<c:url value="/static/js/markdown-it.js"/>"></script>
 <script>
-    contentP = `${post.getContent()}`;
-    console.log(contentP)
+    contentP = `<c:out value="${post.getContent()}" escapeXml="false"/>`;
 </script>
 <script src="<c:url value="/static/js/post_instance.js"/> "></script>
 </body>

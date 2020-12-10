@@ -41,6 +41,8 @@ public class EditController extends HttpServlet {
             resp.getWriter().flush();
             return;
         }
+
+        content.replaceAll("```", "<code>");
         boolean isSave = PostService.getInstance().savePost(new Post(
                 (Integer) SessionUtils.getInstance().getValue(req, "USER_ID"),
                 Integer.parseInt(categoryId),

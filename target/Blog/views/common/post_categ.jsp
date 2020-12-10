@@ -8,7 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="<c:url value="/static/css/common/post_categ.css"/>"/>
-<div class="post-categ">
+<div class="post-categ" onclick="return goToPost(25);">
     <img src="<c:url value="/static/img/avatar.jpg"/>"/>
     <div class="sub-info-post">
         <span class="title">Xây dựng ứng dụng realtime theo dõi nhiệt độ, độ ẩm, ánh sáng sử dụng Firebase Phần I</span>
@@ -21,3 +21,4 @@
         <div class="author-createAt"><span>tranvandiep010</span> 1 tháng trước</div>
     </div>
 </div>
+<script src="<c:url value="/static/js/common/post-categ.js"/>"></script>

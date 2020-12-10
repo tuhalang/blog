@@ -21,8 +21,8 @@
     <div class="info-category">
         <img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/css.png_cqep5dt185"/>
         <div class="categ">
-            <h2>Css</h2>
-            <p><span>25</span> bài viết</p>
+            <h2>${categ.getName()}</h2>
+            <p><span>${categ.getNumOfPosts()}</span> bài viết</p>
         </div>
     </div>
     <div id="divider">

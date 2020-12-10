@@ -33,7 +33,11 @@ public class PostService {
     }
 
     public Post getPostById(String id) {
-        return PostDao.getInstance().searchById(id);
+        return PostDao.getInstance().findById(id);
+    }
+
+    public List<Post> getPostByCategId(int categId, int offset, int limit) {
+        return PostDao.getInstance().searchByCategId(categId, offset, limit);
     }
 
     public boolean savePost(Post post) {

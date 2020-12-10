@@ -52,7 +52,7 @@
             <h1 class="h0">Lazyyy</h1>
             <div class="search-bar">
                 <i class="fab fa-searchengin"></i>
-                <input placeholder="Search here"/>
+                <input placeholder="Search here" type="text" id="search-input"/>
             </div>
         </div>
         <div class="night">

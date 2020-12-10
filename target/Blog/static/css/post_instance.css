@@ -77,6 +77,11 @@ body {
     color: red;
 }
 
+.action-post i:hover,
+.action-post i:focus{
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .fill-space {
     padding-top: 50px;
     padding-right: 15px;
@@ -116,6 +121,24 @@ body {
 #table-of-content span:nth-child(1) {
     font-size: 24px;
     color: #00b5ad;
+}
+
+#toc{
+    font-family: 'Roboto', sans-serif;
+}
+
+#toc h1{
+    font-size: 22px;
+}
+
+#toc h2{
+    font-size: 20px;
+}
+#toc h3{
+    font-size: 18px;
+}
+#toc h4{
+    font-size: 16px;
 }
 
 @media only screen and (max-width: 968px) {
