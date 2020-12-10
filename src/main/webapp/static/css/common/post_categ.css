@@ -4,6 +4,7 @@
     align-items: flex-start;
     padding: 10px;
     border-bottom: 1px solid #ccc;
+    cursor: pointer;
 }
 
 .post-categ img {

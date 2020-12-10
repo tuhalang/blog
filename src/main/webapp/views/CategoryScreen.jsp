@@ -17,6 +17,7 @@
 </head>
 <body>
 <jsp:include page="common/header.jsp"></jsp:include>
+
 <div class="container">
     <div class="info-category">
         <img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/css.png_cqep5dt185"/>
@@ -31,8 +32,13 @@
         <div class="divider-1"></div>
     </div>
     <div class="list-posts">
-        <c:forEach var="i" begin="1" end="5">
-            <jsp:include page="common/post_categ.jsp"></jsp:include>
+        <c:forEach items="${posts}" var="post">
+            <jsp:include page="common/post_categ.jsp">
+                <jsp:param name="title" value="${post.getTitle()}"/>
+                <jsp:param name="summary" value="${post.getSummary()}"/>
+                <jsp:param name="userName" value="${post.getUserName()}"/>
+                <jsp:param name="id" value="${post.getId()}"/>
+            </jsp:include>
         </c:forEach>
     </div>
 </div>

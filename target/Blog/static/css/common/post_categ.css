@@ -4,6 +4,7 @@
     align-items: flex-start;
     padding: 10px;
     border-bottom: 1px solid #ccc;
+    cursor: pointer;
 }
 
 .post-categ img {
@@ -26,6 +27,9 @@
     word-wrap: break-word;
     text-overflow: ellipsis;
     color: #00b5ad;
+}
+.list-tags {
+    min-height: 65vh;
 }
 
 .sub-info-post .list-tags {
