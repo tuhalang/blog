@@ -28,7 +28,7 @@
         </div>
         <ul class="dropdown">
             <li><a href="#">Home</a></li>
-            <li><a href="<c:url value="/category"/>">Categories</a></li>
+            <li><a href="<c:url value="/categories"/>">Categories</a></li>
             <c:if test="${USERNAME==null}">
                 <li id="login" onclick="return showLogin();"><a href="#">Login</a></li>
             </c:if>

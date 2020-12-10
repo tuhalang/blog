@@ -80,7 +80,7 @@ public class CategoryDao extends BaseDao{
     }
 
     public Category findById(int categId){
-        String sql = "select c.*,(select count(*) from posts p where p.category_id = c.id) as num_of_posts from category c where lower(c.id) = ?";
+        String sql = "select c.*,(select count(*) from posts p where p.category_id = c.id) as num_of_posts from category c where c.id = ?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
