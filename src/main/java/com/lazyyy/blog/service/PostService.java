@@ -49,4 +49,24 @@ public class PostService {
         return true;
     }
 
+    public List<Post> searchPost(String key, int offset, int limit) {
+        try {
+            List<Post> search = PostDao.getInstance().searchByName(key, offset, limit);
+            return search;
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
+            return null;
+        }
+    }
+
+    public List<Post> searchByCategory(String key, int offset, int limit) {
+        try {
+            List<Post> search = PostDao.getInstance().searchByCategory(key, offset, limit);
+            return search;
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(), e);
+            return null;
+        }
+    }
+
 }

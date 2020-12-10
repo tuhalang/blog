@@ -154,6 +154,7 @@ nav:hover .dropdown {
 
 .search-bar input:hover,
 .search-bar input:focus {
+    opacity: 1;
     outline: none;
 }
 
