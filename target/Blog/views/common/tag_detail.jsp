@@ -8,11 +8,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="<c:url value="/static/css/common/tag_detail.css"/>">
-<div class="tag-detail" onclick="return goToCategory(2)">
+<div class="tag-detail" onclick="return goToCategory(${param.id})">
     <img src="<c:url value="/static/img/js.jpg"/>"/>
     <div>
-        <div class="name-tags"><i class="fas fa-rss"></i> Javascript</div>
-        <div class="amount-post"><span>2092</span> post</div>
+        <div class="name-tags"><i class="fas fa-rss"></i> ${param.name}</div>
+        <div class="amount-post"><span>${param.numOfPosts}</span> post</div>
         <div></div>
     </div>
 </div>

@@ -93,7 +93,7 @@ public class PostDao extends BaseDao {
     }
 
     public List<Post> searchByCategId(int categId, int offset, int limit) {
-        String sql = "select * from posts p where p.category_id = ? offset ? limit ?";
+        String sql = "select p.*, u.username from posts p inner join users u on u.id = p.user_id where p.category_id = ? offset ? limit ?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -116,6 +116,7 @@ public class PostDao extends BaseDao {
                 String content = rs.getString("content");
                 Date createdAt = rs.getDate("created_at");
                 Integer categoryId = rs.getInt("category_id");
+                String userName = rs.getString("username");
 
                 Post post = new Post();
                 post.setId(id);
@@ -126,6 +127,7 @@ public class PostDao extends BaseDao {
                 post.setSummary(summary);
                 post.setContent(content);
                 post.setCreatedAt(createdAt);
+                post.setUserName(userName);
 
                 posts.add(post);
             }

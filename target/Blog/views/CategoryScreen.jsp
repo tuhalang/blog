@@ -17,6 +17,7 @@
 </head>
 <body>
 <jsp:include page="common/header.jsp"></jsp:include>
+
 <div class="container">
     <div class="info-category">
         <img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/css.png_cqep5dt185"/>
@@ -35,6 +36,10 @@
             <jsp:include page="common/post_categ.jsp">
                 <jsp:param name="title" value="${post.getTitle()}"/>
                 <jsp:param name="summary" value="${post.getSummary()}"/>
+<<<<<<< HEAD
+=======
+                <jsp:param name="userName" value="${post.getUserName()}"/>
+>>>>>>> 542a93c1d50ad14edc5c761a7f7a4ad9a996ee00
                 <jsp:param name="id" value="${post.getId()}"/>
             </jsp:include>
         </c:forEach>

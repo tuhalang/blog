@@ -13,12 +13,12 @@
     <div class="sub-info-post">
         <span class="title">${param.title}</span>
         <div class="list-tags">
-            <c:forEach var="i" begin="1" end="5">
-                <span>Css</span>
-            </c:forEach>
+<%--            <c:forEach var="i" begin="1" end="5">--%>
+<%--                <span>Css</span>--%>
+<%--            </c:forEach>--%>
         </div>
         <span class="sub-content">${param.summary}</span>
-        <div class="author-createAt"><span>tranvandiep010</span> 1 tháng trước</div>
+        <div class="author-createAt"><span>${param.userName}<</span> 1 tháng trước</div>
     </div>
 </div>
 <script src="<c:url value="/static/js/common/post-categ.js"/>"></script>

@@ -22,6 +22,8 @@ public class Post {
     private String image;
     private Date createdAt;
 
+    private String userName;
+
     public Post() {
     }
 
@@ -59,6 +61,14 @@ public class Post {
 
     public Integer getId() {
         return id;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public void setId(Integer id) {
