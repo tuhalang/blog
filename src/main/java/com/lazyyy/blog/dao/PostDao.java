@@ -93,7 +93,7 @@ public class PostDao extends BaseDao {
     }
 
     public List<Post> searchByCategId(int categId, int offset, int limit) {
-        String sql = "select * from posts p where lower(p.category_id) = ? offset ? limit ?";
+        String sql = "select * from posts p where p.category_id = ? offset ? limit ?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -103,6 +103,56 @@ public class PostDao extends BaseDao {
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(sql);
             ps.setInt(1, categId);
+            ps.setInt(2, offset);
+            ps.setInt(3, limit);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Integer id = rs.getInt("id");
+                Integer userId = rs.getInt("user_id");
+                String title = rs.getString("title");
+                String thumbnail = rs.getString("thumbnail");
+                String summary = rs.getString("summary");
+                String content = rs.getString("content");
+                Date createdAt = rs.getDate("created_at");
+                Integer categoryId = rs.getInt("category_id");
+
+                Post post = new Post();
+                post.setId(id);
+                post.setUserId(userId);
+                post.setCategoryId(categoryId);
+                post.setThumbnail(thumbnail);
+                post.setTitle(title);
+                post.setSummary(summary);
+                post.setContent(content);
+                post.setCreatedAt(createdAt);
+
+                posts.add(post);
+            }
+
+            return posts;
+        } catch (SQLException ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            rollback(conn);
+            return null;
+        } finally {
+            closeObject(ps);
+            closeObject(conn);
+            closeObject(rs);
+        }
+    }
+
+    public List<Post> searchByUserId(int uid, int offset, int limit) {
+        String sql = "select * from posts p where p.category_id = ? offset ? limit ?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Post> posts = new ArrayList<>();
+        try {
+            conn = getDefaultConnection();
+            conn.setAutoCommit(false);
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, uid);
             ps.setInt(2, offset);
             ps.setInt(3, limit);
             rs = ps.executeQuery();

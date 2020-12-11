@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <html>
 <head>
     <title>CSS</title>
@@ -31,8 +31,12 @@
         <div class="divider-1"></div>
     </div>
     <div class="list-posts">
-        <c:forEach var="i" begin="1" end="5">
-            <jsp:include page="common/post_categ.jsp"></jsp:include>
+        <c:forEach items="${posts}" var="post">
+            <jsp:include page="common/post_categ.jsp">
+                <jsp:param name="title" value="${post.getTitle()}"/>
+                <jsp:param name="summary" value="${post.getSummary()}"/>
+                <jsp:param name="id" value="${post.getId()}"/>
+            </jsp:include>
         </c:forEach>
     </div>
 </div>
