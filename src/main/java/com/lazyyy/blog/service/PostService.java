@@ -40,6 +40,10 @@ public class PostService {
         return PostDao.getInstance().searchByCategId(categId, offset, limit);
     }
 
+    public List<Post> getPostByUserId(int userId, int offset, int limit) {
+        return PostDao.getInstance().searchByUserId(userId, offset, limit);
+    }
+
     public boolean savePost(Post post) {
         try {
             PostDao.getInstance().save(post);

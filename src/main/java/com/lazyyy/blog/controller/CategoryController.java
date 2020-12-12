@@ -18,6 +18,7 @@ public class CategoryController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
         Category categ = CategoryService.getInstance().getById(Integer.parseInt(id));
         List<Post> postList = PostService.getInstance().getPostByCategId(categ.getId(), 0, 15);

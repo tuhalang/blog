@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,7 +34,7 @@
             </c:if>
             <c:if test="${USERNAME!=null}">
                 <li><a href="#" onclick="return logout();">Logout</a></li>
-                <li><a href="#">Quản lí tài khoản</a></li>
+                <li><a href="<c:url value="/secure/profile"/>" onclick="return goToProfile();">Quản lí tài khoản</a></li>
             </c:if>
         </ul>
     </nav>
@@ -93,7 +93,7 @@
         <input placeholder="Tìm kiếm chủ đề" id='search-categ'/>
         <h2>Categories</h2>
         <c:forEach items="${categories}" var="category">
-            <div class="sub_categ">
+            <div class="sub_categ" onclick="return goToCategory(${category.getId()});">
                 <label>${category.getName()}</label>
                 <p class="amount-post">(${category.getNumOfPosts()})</p>
             </div>

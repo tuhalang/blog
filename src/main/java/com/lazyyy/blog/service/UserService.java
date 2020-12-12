@@ -42,6 +42,18 @@ public class UserService {
         }
     }
 
+    public boolean isExists(String username) {
+        return UserDao.getInstance().isExists(username);
+    }
+
+    public void changeUsername(String oldUsername, String newUsername) {
+        UserDao.getInstance().changeUsername(oldUsername, newUsername);
+    }
+
+    public void changePassword(String username, String newPassword) {
+        UserDao.getInstance().changePassword(username, newPassword, true);
+    }
+
     public User getById(int id){
         User user = UserDao.getInstance().findUserById(id);
         return user;
