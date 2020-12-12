@@ -28,9 +28,6 @@
     text-overflow: ellipsis;
     color: #00b5ad;
 }
-.list-tags {
-    min-height: 65vh;
-}
 
 .sub-info-post .list-tags {
     display: flex;

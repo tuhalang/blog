@@ -25,7 +25,7 @@ public class CategoriesController extends HttpServlet {
             throws ServletException, IOException {
         String categoryName = request.getParameter("categoryName");
 
-        List<Category> categoryList = CategoryService.getInstance().getAllCategory();
+        List<Category> categoryList = CategoryService.getInstance().getByName(categoryName);
         request.setAttribute("categoryList", categoryList);
         request.setAttribute("categoryName", categoryName);
 

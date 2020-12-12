@@ -32,6 +32,10 @@ public class CategoryService {
         return CategoryDao.getInstance().findAll();
     }
 
+    public List<Category> getByName(String name) {
+        return CategoryDao.getInstance().searchByName(name);
+    }
+
     public Category getById(int id) {
         return CategoryDao.getInstance().findById(id);
     }
