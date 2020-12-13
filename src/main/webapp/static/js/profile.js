@@ -22,11 +22,12 @@ function openSelectAvatar() {
     modal.style.display = "block";
 }
 
-window.onclick = function(event) {
+window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
+
 /////////////////////////////////////////////////
 function updateUsername(self) {
     var xhr = new XMLHttpRequest();
@@ -77,6 +78,65 @@ function updatePassword(self) {
 }
 
 ////////////////////////////////////////////////////////
-function onUpdateInfo(){
+function onUpdateInfo() {
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        if (xhr.responseText == 200) {
+            alert("Đổi tên tài khoản thành công");
+            location.reload()
+        } else {
+            alert("Đổi tên tài khoản thất bại");
+        }
+    } // success case
+    xhr.onerror = function () {
+        alert("Đổi tên tài khoản thất bại");
+    } // failure case
+    var uname = document.getElementById('input-change-uname').value
+    var fd = new FormData();
+    fd.append("type", "username");
+    fd.append("newUsername", uname)
+    var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/secure/profile";
+    xhr.open('POST', url, true);
+    xhr.send(fd);
+    return false;
+}
 
+////////////////////////////////////////////////////////////////////
+//avatar
+function testImage(url, callback, timeout) {
+    timeout = timeout || 2000;
+    let timedOut = false, timer;
+    let img = new Image();
+    img.onerror = img.onabort = function () {
+        if (!timedOut) {
+            clearTimeout(timer);
+            callback(url, "error");
+        }
+    };
+    img.onload = function () {
+        if (!timedOut) {
+            clearTimeout(timer);
+            callback(url, "success");
+        }
+    };
+    img.src = url;
+    timer = setTimeout(function () {
+        timedOut = true;
+        img.src = "//!!!!/test.jpg";
+        callback(url, "timeout");
+    }, timeout);
+}
+
+function changeInpAvatar() {
+    let val = document.getElementById('input-modal-avatar').value
+    testImage(val, (val, type) => {
+        if (type == "success") {
+            document.getElementById('save-avatar').style.display = "block"
+        }
+    }, 1000)
+}
+
+function changeAvatar(){
+    let val = document.getElementById('input-modal-avatar').value
+    modal.style.display = "none";
 }

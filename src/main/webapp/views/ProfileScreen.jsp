@@ -20,17 +20,6 @@
 <jsp:include page="common/header.jsp"></jsp:include>
 <div class="container">
     <div class="profile">
-        <%--        <div class="profile-detail profile-item">--%>
-        <%--            <img src="https://static.addtoany.com/images/dracaena-cinnabari.jpg" class="avatar">--%>
-        <%--            <div class="profile-name">Trần Điệp</div>--%>
-        <%--            <div class="profile-content"></div>--%>
-        <%--        </div>--%>
-        <%--        <div class="settings-of-profile profile-item">--%>
-        <%--            <div class="profile-item-1">--%>
-        <%--                <div>Bài viết</div>--%>
-        <%--                <div>2</div>--%>
-        <%--            </div>--%>
-        <%--        </div>--%>
         <div class="tab-profile">
             <div class="tab-profile-links active" onclick="changeTab(event, 'account')">Tài khoản</div>
             <div class="tab-profile-links" onclick="changeTab(event, 'pwd')">Mật khẩu</div>
@@ -50,35 +39,37 @@
                 </c:if>
             </div>
             <div id="lable-uname">Tên đăng nhập</div>
-            <form onsubmit="return updateUsername(this)" action="<c:url value="/secure/profile"/>" method="post">
-                <div id="input-uname">
-                    <i class="fas fa-user-alt"></i>
-                    <input id="input-rg-uname" placeholder="${user.getUsername()}" name="newUsername"
-                           pattern="^(?=.{6,32}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required
-                           title="Tên đăng nhập dài từ 6 đến 32 kí tự và không chứa kí tự đặc biệt"/>
-                    <button type="submit">
-                        save
-                    </button>
-                </div>
-                <div id="amount-post">Số lượng bài viết: <span>${fn:length(posts)}</span></div>
-                <div id="btn-save" onclick="return onUpdateInfo();"><i class="fas fa-save"></i> Lưu</div>
-            </form>
+            <div id="input-uname">
+                <i class="fas fa-user-alt"></i>
+                <input id="input-change-uname" placeholder="${user.getUsername()}"
+                       pattern="^(?=.{6,32}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$" required
+                       title="Tên đăng nhập dài từ 6 đến 32 kí tự và không chứa kí tự đặc biệt"/>
+            </div>
+            <div id="amount-post">Số lượng bài viết: <span>${fn:length(posts)}</span></div>
+            <div id="btn-save" onclick="return onUpdateInfo();"><i class="fas fa-save"></i> Lưu</div>
         </div>
 
         <div id="pwd" class="tab-profile-content">
             <form action="<c:url value="/secure/profile"/>" method="post" onsubmit="return updatePassword(this)">
-                <input placeholder="Nhập mật khẩu cũ" type="password"
-                       pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,32}$" required name="oldPassword"
-                       title="Phải chứa ít nhất một số và một chữ cái viết hoa và viết thường và có từ 6 đến 32 ký tự"/>
-                <input placeholder="Nhập mật khẩu mới" type="password"
-                       pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,32}$" required name="newPassword"
-                       title="Phải chứa ít nhất một số và một chữ cái viết hoa và viết thường và có từ 6 đến 32 ký tự"/>
-                <input placeholder="nhập lại mật khẩu mới" type="password"
-                       pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,32}$" required name="renewPassword"
-                       title="Phải chứa ít nhất một số và một chữ cái viết hoa và viết thường và có từ 6 đến 32 ký tự"/>
-                <button type="submit">
-                    save
-                </button>
+                <div class="input-change-pwd">
+                    <i class="fas fa-lock"></i>
+                    <input placeholder="Nhập mật khẩu cũ" type="password"
+                           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,32}$" required name="oldPassword"
+                           title="Phải chứa ít nhất một số và một chữ cái viết hoa và viết thường và có từ 6 đến 32 ký tự"/>
+                </div>
+                <div class="input-change-pwd">
+                    <i class="fas fa-lock"></i>
+                    <input placeholder="Nhập mật khẩu mới" type="password"
+                           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,32}$" required name="newPassword"
+                           title="Phải chứa ít nhất một số và một chữ cái viết hoa và viết thường và có từ 6 đến 32 ký tự"/>
+                </div>
+                <div class="input-change-pwd">
+                    <i class="fas fa-lock"></i>
+                    <input placeholder="nhập lại mật khẩu mới" type="password"
+                           pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{6,32}$" required name="renewPassword"
+                           title="Phải chứa ít nhất một số và một chữ cái viết hoa và viết thường và có từ 6 đến 32 ký tự"/>
+                </div>
+                <button type="submit" class="btn-save"><i class="fas fa-save"></i> Lưu</button>
             </form>
         </div>
 
@@ -102,7 +93,10 @@
     <!-- Modal content -->
     <div class="modal-content-avatar">
         <h2>Nhập đường dẫn ảnh bạn muốn đặt làm ảnh đại diện</h2>
-        <input type="text" placeholder="https://" id="input-modal-avatar"/>
+        <div class="avatar-change">
+            <input type="text" placeholder="https://" id="input-modal-avatar" oninput="return changeInpAvatar();"/>
+            <div id="save-avatar" onclick="return changeAvatar();">Lưu</div>
+        </div>
     </div>
 
 </div>
