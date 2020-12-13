@@ -11,7 +11,7 @@ function searchCategory(self) {
         var tempcss = css[0];
         var tempjs = js[0];
 
-        headtag[1].textContent = 'Danh mục(' + data.length + ')';
+        headtag[1].getElementsByTagName("div")[0].textContent = 'Danh mục(' + data.length + ')';
 
         for (let i = 0; i < subtag.length; i++) {
             subtag[i].remove();
