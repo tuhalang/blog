@@ -27,10 +27,10 @@
 <div class="head-tags">
     <div style="font-size: 18px;font-weight: 550;">Danh Mục(${categoryList.size()}) </div>
     <div class="space-fill"></div>
-    <form action="<c:url value="/categories"/>" method="post">
+    <form action="<c:url value="/categories"/>" method="post" onsubmit="return searchCategory(this)">
         <div class="search-categ">
             <input name="categoryName" value="${categoryName}"/>
-            <button type="submit">
+            <button type="submit" style="display: none">
                 search
             </button>
         </div>
@@ -45,6 +45,7 @@
         </jsp:include>
     </c:forEach>
 </div>
+<script src="<c:url value="/static/js/categories.js"/>"></script>
 <jsp:include page="common/footer.jsp"></jsp:include>
 </body>
 </html>

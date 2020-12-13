@@ -26,4 +26,15 @@ public class CategoryController extends HttpServlet {
         request.setAttribute("posts", postList);
         request.getRequestDispatcher("/views/CategoryScreen.jsp").forward(request, response);
     }
+
+    protected void doGPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        String id = request.getParameter("id");
+        Category categ = CategoryService.getInstance().getById(Integer.parseInt(id));
+        List<Post> postList = PostService.getInstance().getPostByCategId(categ.getId(), 0, 15);
+        request.setAttribute("categ", categ);
+        request.setAttribute("posts", postList);
+        request.getRequestDispatcher("/views/CategoryScreen.jsp").forward(request, response);
+    }
 }
