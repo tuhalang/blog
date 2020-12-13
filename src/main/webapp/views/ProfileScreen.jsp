@@ -42,7 +42,12 @@
                 <div class="avatar-1">
                     <i class="fas fa-link"></i>
                 </div>
-                <img src="https://png.pngtree.com/png-clipart/20190906/original/pngtree-couple-avatar-girl-avatar-cartoon-simple-school-uniform-student-png-image_4558110.jpg"/>
+                <c:if test="${user.getAvatar()!=null}">
+                    <img src="${user.getAvatar()}"/>
+                </c:if>
+                <c:if test="${user.getAvatar()==null}">
+                    <img src="https://png.pngtree.com/png-clipart/20190906/original/pngtree-couple-avatar-girl-avatar-cartoon-simple-school-uniform-student-png-image_4558110.jpg"/>
+                </c:if>
             </div>
             <div id="lable-uname">Tên đăng nhập</div>
             <form onsubmit="return updateUsername(this)" action="<c:url value="/secure/profile"/>" method="post">
@@ -56,7 +61,7 @@
                     </button>
                 </div>
                 <div id="amount-post">Số lượng bài viết: <span>${fn:length(posts)}</span></div>
-                <div id="btn-save"><i class="fas fa-save"></i> Lưu</div>
+                <div id="btn-save" onclick="return onUpdateInfo();"><i class="fas fa-save"></i> Lưu</div>
             </form>
         </div>
 
@@ -97,7 +102,7 @@
     <!-- Modal content -->
     <div class="modal-content-avatar">
         <h2>Nhập đường dẫn ảnh bạn muốn đặt làm ảnh đại diện</h2>
-        <input type="text" placeholder="https://"/>
+        <input type="text" placeholder="https://" id="input-modal-avatar"/>
     </div>
 
 </div>

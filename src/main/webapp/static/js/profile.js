@@ -75,3 +75,8 @@ function updatePassword(self) {
     xhr.send(fd);
     return false;
 }
+
+////////////////////////////////////////////////////////
+function onUpdateInfo(){
+
+}
