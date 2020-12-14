@@ -16,6 +16,14 @@
     <link rel="stylesheet" href="<c:url value="/static/css/fontawesome-free-5.15.1-web/css/all.css"/>"/>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Roboto:ital@1&display=swap"
           rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PX5CNE1YB5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-PX5CNE1YB5');
+    </script>
 </head>
 <body>
 <div class="navbar">
