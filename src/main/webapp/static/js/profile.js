@@ -138,5 +138,28 @@ function changeInpAvatar() {
 
 function changeAvatar(){
     let val = document.getElementById('input-modal-avatar').value
+
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+        if (xhr.responseText == 200) {
+            document.getElementById('avatar').src = val;
+            alert("Đổi ảnh đại diện thành công");
+        } else {
+            alert("Đổi ảnh đại diện thất bại");
+        }
+    } // success case
+    xhr.onerror = function () {
+        alert("Đổi ảnh đại diện thất bại");
+    } // failure case
+
+    var fd = new FormData();
+    fd.append("type", "avatar");
+    fd.append("url", val);
+
+    var action = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/secure/profile";
+
+    xhr.open('POST', action, true);
+    xhr.send(fd);
     modal.style.display = "none";
+    return false;
 }

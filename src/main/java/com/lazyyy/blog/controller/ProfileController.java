@@ -38,11 +38,11 @@ public class ProfileController extends HttpServlet {
                 UserService.getInstance().changeUsername(user.getUsername(), newUsername);
                 resp.getWriter().print(200);
                 resp.getWriter().flush();
-            }else{
+            } else {
                 resp.getWriter().print(401);
                 resp.getWriter().flush();
             }
-        } else {
+        } else if (type.equalsIgnoreCase("password")) {
             String newPassword = req.getParameter("newPassword");
             String oldPassword = req.getParameter("oldPassword");
 
@@ -55,6 +55,12 @@ public class ProfileController extends HttpServlet {
                 resp.getWriter().flush();
             }
 
+        } else {
+            String url = req.getParameter("url");
+
+            UserService.getInstance().changeAvatar(user.getUsername(), url);
+            resp.getWriter().print(200);
+            resp.getWriter().flush();
         }
 
     }

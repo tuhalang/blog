@@ -169,6 +169,31 @@ public class UserDao extends BaseDao {
         LOGGER.debug("End save, time execute: " + (endTime - startTime) + " (ms)");
     }
 
+    public void changeAvatar(String username, String url) {
+        Long startTime = System.currentTimeMillis();
+        String sql = "update users set avatar = ? where username = ?;";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = getDefaultConnection();
+            conn.setAutoCommit(false);
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, url);
+            ps.setString(2, username);
+            ps.setQueryTimeout(120);
+            ps.executeUpdate();
+            conn.commit();
+        } catch (SQLException ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            rollback(conn);
+        } finally {
+            closeObject(ps);
+            closeObject(conn);
+        }
+        Long endTime = System.currentTimeMillis();
+        LOGGER.debug("End save, time execute: " + (endTime - startTime) + " (ms)");
+    }
+
     /**
      * @param user
      * @param isEncryptPass

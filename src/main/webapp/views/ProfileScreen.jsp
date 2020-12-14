@@ -32,10 +32,10 @@
                     <i class="fas fa-link"></i>
                 </div>
                 <c:if test="${user.getAvatar()!=null}">
-                    <img src="${user.getAvatar()}"/>
+                    <img id="avatar" src="${user.getAvatar()}"/>
                 </c:if>
                 <c:if test="${user.getAvatar()==null}">
-                    <img src="https://png.pngtree.com/png-clipart/20190906/original/pngtree-couple-avatar-girl-avatar-cartoon-simple-school-uniform-student-png-image_4558110.jpg"/>
+                    <img id="avatar" src="https://png.pngtree.com/png-clipart/20190906/original/pngtree-couple-avatar-girl-avatar-cartoon-simple-school-uniform-student-png-image_4558110.jpg"/>
                 </c:if>
             </div>
             <div id="lable-uname">Tên đăng nhập</div>

@@ -54,6 +54,10 @@ public class UserService {
         UserDao.getInstance().changePassword(username, newPassword, true);
     }
 
+    public void changeAvatar(String username, String url) {
+        UserDao.getInstance().changeAvatar(username, url);
+    }
+
     public User getById(int id){
         User user = UserDao.getInstance().findUserById(id);
         return user;
