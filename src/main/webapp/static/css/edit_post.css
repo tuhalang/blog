@@ -31,6 +31,11 @@ body {
     font-weight: bold;
 }
 
+.edit-preview{
+    justify-content: center;
+    align-items: flex-end;
+}
+
 .sub-content-edit {
     width: -webkit-fill-available;
     margin: 18px 0;

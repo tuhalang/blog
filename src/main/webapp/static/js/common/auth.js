@@ -55,7 +55,7 @@ function register(self) {
 function logout() {
     var xhr = new XMLHttpRequest();
     xhr.onload = function () {
-        location.replace("/home")
+        location.replace(window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/home")
     } // success case
     xhr.onerror = function () {} // failure case
     var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/auth/signOut";

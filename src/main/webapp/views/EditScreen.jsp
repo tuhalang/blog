@@ -24,7 +24,7 @@
            placeholder="Mô tả hợp lý giúp người đọc hiểu về bài viết dễ hơn (nhiều hơn 50 từ)"/>
     <div id="body-edit">
         <div class="tab">
-            <div>
+            <div class="edit-preview">
                 <div id="tab-space"></div>
                 <button class="tablinks active" onclick="changeTab(event, 'edit')">Edit</button>
                 <button class="tablinks" onclick="changeTab(event, 'preview')">Preview</button>

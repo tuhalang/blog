@@ -19,7 +19,11 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-PX5CNE1YB5"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag('js', new Date());
 
         gtag('config', 'G-PX5CNE1YB5');
@@ -107,8 +111,8 @@
         <form action="<c:url value="/categories"/>" method="post" onsubmit="return searchCategory(this)">
             <input placeholder="Tìm kiếm chủ đề" id='search-categ' name="categoryName"/>
             <button type="submit" style="display: none">
-                    search
-                </button>
+                search
+            </button>
         </form>
         <h2>Categories</h2>
         <c:forEach items="${categories}" var="category">

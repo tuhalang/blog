@@ -46,7 +46,8 @@
 <jsp:include page="common/footer.jsp"></jsp:include>
 <script src="<c:url value="/static/js/markdown-it.js"/>"></script>
 <script>
-    contentP = `<c:out value="${post.getContent()}" escapeXml="false"/>`;
+    contentP = `<c:out value="${post.getContent()}"/>`;
+    console.log(contentP)
 </script>
 <script src="<c:url value="/static/js/post_instance.js"/> "></script>
 </body>

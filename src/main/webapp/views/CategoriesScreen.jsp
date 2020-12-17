@@ -40,6 +40,7 @@
     <c:forEach items="${categoryList}" var="category">
         <jsp:include page="common/tag_detail.jsp">
             <jsp:param name="name" value="${category.getName()}"/>
+            <jsp:param name="code" value="${category.getCode()}"/>
             <jsp:param name="numOfPosts" value="${category.getNumOfPosts()}"/>
             <jsp:param name="id" value="${category.getId()}"/>
         </jsp:include>

@@ -11,7 +11,7 @@ function goToSettings() {
 function logout() {
     var xhr = new XMLHttpRequest();
     xhr.onload = function () {
-        location.replace("/home")
+        location.replace(window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/home")
     } // success case
     xhr.onerror = function () {
     } // failure case
@@ -25,7 +25,8 @@ var modal = document.getElementById("modal-login");
 function showLogin() {
     modal.style.display = "block";
 }
-window.onclick = function(event) {
+
+window.onclick = function (event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }

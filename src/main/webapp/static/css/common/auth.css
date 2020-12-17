@@ -39,6 +39,10 @@
     font-family: 'Roboto', sans-serif;
     font-size: 30px;
 }
+.introduce img{
+    width: 100%;
+    object-fit: cover;
+}
 
 /* Style the tab */
 .tab {

@@ -28,7 +28,7 @@
             <a href="#"><i class="fas fa-user-circle"></i></a>
             <div class="dropdown-content">
                 <div onclick="return goToProfile()"><i class="fas fa-user-alt"></i> Trang cá nhân</div>
-                <div onclick="return goToSettings()"><i class="fas fa-cogs"></i> Cài đặt</div>
+<%--                <div onclick="return goToSettings()"><i class="fas fa-cogs"></i> Cài đặt</div>--%>
                 <c:if test="${USERNAME==null}">
                     <div onclick="return showLogin();"><i class="fas fa-sign-in-alt"></i> Đăng nhập</div>
                 </c:if>
