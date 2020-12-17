@@ -18,7 +18,7 @@ public class InteractController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
-        String userIdStr = (String) SessionUtils.getInstance().getValue(req, "USER_ID");
+        String userIdStr = SessionUtils.getInstance().getValue(req, "USER_ID").toString();
         String postIdStr = req.getParameter("postId");
         String typeStr = req.getParameter("type");
 

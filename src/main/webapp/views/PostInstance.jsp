@@ -19,10 +19,10 @@
 <body>
 <jsp:include page="common/header.jsp"></jsp:include>
 <div class="container">
-    <div class="fill-space">
+    <div class="fill-space-post">
         <div class="action-post">
-            <i class="far fa-thumbs-up"></i>
-            <i class="fas fa-comment-dots"></i>
+            <i class="far fa-thumbs-up" onclick="return interactPost(${post.getId()},'1');"></i>
+            <%--            <i class="fas fa-comment-dots"></i>--%>
         </div>
     </div>
     <div class="container-post">
@@ -37,17 +37,16 @@
                 <span>${numOfPosts} bài viết</span>
             </div>
         </div>
-<%--        <div id="table-of-content">--%>
-<%--            <span>Mục lục</span>--%>
-<%--            <div id="toc"></div>--%>
-<%--        </div>--%>
+        <div id="table-of-content">
+            <span>Mục lục</span>
+            <div id="toc"></div>
+        </div>
     </div>
 </div>
 <jsp:include page="common/footer.jsp"></jsp:include>
 <script src="<c:url value="/static/js/markdown-it.js"/>"></script>
 <script>
     contentP = `<c:out value="${post.getContent()}"/>`;
-    console.log(contentP)
 </script>
 <script src="<c:url value="/static/js/post_instance.js"/> "></script>
 </body>
