@@ -1,9 +1,13 @@
 package com.lazyyy.blog.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lazyyy.blog.model.Category;
+import com.lazyyy.blog.model.Post;
 import com.lazyyy.blog.service.CategoryService;
+import com.lazyyy.blog.service.PostService;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -12,6 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet("/categories")
+@MultipartConfig
 public class CategoriesController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -25,10 +30,12 @@ public class CategoriesController extends HttpServlet {
             throws ServletException, IOException {
         String categoryName = request.getParameter("categoryName");
 
-        List<Category> categoryList = CategoryService.getInstance().getAllCategory();
-        request.setAttribute("categoryList", categoryList);
-        request.setAttribute("categoryName", categoryName);
+        List<Category> categories = CategoryService.getInstance().getByName(categoryName);
 
-        request.getRequestDispatcher("/views/CategoriesScreen.jsp").forward(request, response);
+        ObjectMapper objectMapper = new ObjectMapper();
+        String listPost = objectMapper.writeValueAsString(categories);
+
+        response.getWriter().print(listPost);
+        response.getWriter().flush();
     }
 }

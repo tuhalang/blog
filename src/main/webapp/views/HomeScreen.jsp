@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +42,8 @@
             </c:if>
             <c:if test="${USERNAME!=null}">
                 <li><a href="#" onclick="return logout();">Logout</a></li>
-                <li><a href="#">Quản lí tài khoản</a></li>
+                <li><a href="<c:url value="/secure/profile"/>" onclick="return goToProfile();">Quản lí tài khoản</a>
+                </li>
             </c:if>
         </ul>
     </nav>
@@ -58,10 +59,15 @@
         <div class="content-welcome">
             <h1>Welcome to</h1>
             <h1 class="h0">Lazyyy</h1>
-            <div class="search-bar">
-                <i class="fab fa-searchengin"></i>
-                <input placeholder="Search here" type="text" id="search-input"/>
-            </div>
+            <form action="<c:url value="/post"/>" method="post" onsubmit="return searchPost(this)">
+                <div class="search-bar">
+                    <i class="fab fa-searchengin"></i>
+                    <input placeholder="Search here" type="text" id="search-input" name="postName"/>
+                    <button type="submit" style="display: none">
+                        search
+                    </button>
+                </div>
+            </form>
         </div>
         <div class="night">
             <div class="shooting_star"></div>
@@ -98,10 +104,15 @@
         </c:forEach>
     </div>
     <div class="list-categories">
-        <input placeholder="Tìm kiếm chủ đề" id='search-categ'/>
+        <form action="<c:url value="/categories"/>" method="post" onsubmit="return searchCategory(this)">
+            <input placeholder="Tìm kiếm chủ đề" id='search-categ' name="categoryName"/>
+            <button type="submit" style="display: none">
+                    search
+                </button>
+        </form>
         <h2>Categories</h2>
         <c:forEach items="${categories}" var="category">
-            <div class="sub_categ">
+            <div class="sub_categ" onclick="return goToCategory(${category.getId()});">
                 <label>${category.getName()}</label>
                 <p class="amount-post">(${category.getNumOfPosts()})</p>
             </div>

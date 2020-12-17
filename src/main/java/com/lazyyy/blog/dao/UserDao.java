@@ -144,6 +144,56 @@ public class UserDao extends BaseDao {
         return user;
     }
 
+    public void changeUsername(String oldUsername, String newUsername) {
+        Long startTime = System.currentTimeMillis();
+        String sql = "update users set username = ? where username = ?;";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = getDefaultConnection();
+            conn.setAutoCommit(false);
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, newUsername);
+            ps.setString(2, oldUsername);
+            ps.setQueryTimeout(120);
+            ps.executeUpdate();
+            conn.commit();
+        } catch (SQLException ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            rollback(conn);
+        } finally {
+            closeObject(ps);
+            closeObject(conn);
+        }
+        Long endTime = System.currentTimeMillis();
+        LOGGER.debug("End save, time execute: " + (endTime - startTime) + " (ms)");
+    }
+
+    public void changeAvatar(String username, String url) {
+        Long startTime = System.currentTimeMillis();
+        String sql = "update users set avatar = ? where username = ?;";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = getDefaultConnection();
+            conn.setAutoCommit(false);
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, url);
+            ps.setString(2, username);
+            ps.setQueryTimeout(120);
+            ps.executeUpdate();
+            conn.commit();
+        } catch (SQLException ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            rollback(conn);
+        } finally {
+            closeObject(ps);
+            closeObject(conn);
+        }
+        Long endTime = System.currentTimeMillis();
+        LOGGER.debug("End save, time execute: " + (endTime - startTime) + " (ms)");
+    }
+
     /**
      * @param user
      * @param isEncryptPass
@@ -170,6 +220,35 @@ public class UserDao extends BaseDao {
             }
             ps.setBoolean(4, user.getStatus());
             ps.setString(5, user.getRole());
+            ps.setQueryTimeout(120);
+            ps.executeUpdate();
+            conn.commit();
+        } catch (SQLException ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            rollback(conn);
+        } finally {
+            closeObject(ps);
+            closeObject(conn);
+        }
+        Long endTime = System.currentTimeMillis();
+        LOGGER.debug("End save, time execute: " + (endTime - startTime) + " (ms)");
+    }
+
+    public void changePassword(String username, String newPassword, boolean isEncryptPass) {
+        LOGGER.debug("Start save, isEncryptPass: " + isEncryptPass);
+        if (isEncryptPass) {
+            newPassword = BCrypt.hashpw(newPassword, BCrypt.gensalt(10));
+        }
+        Long startTime = System.currentTimeMillis();
+        String sql = "update users set password = ? where username = ?;";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = getDefaultConnection();
+            conn.setAutoCommit(false);
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, newPassword);
+            ps.setString(2, username);
             ps.setQueryTimeout(120);
             ps.executeUpdate();
             conn.commit();

@@ -43,7 +43,7 @@ public class PostDao extends BaseDao {
     }
 
     public List<Post> searchByName(String key, int offset, int limit) {
-        String sql = "select * from posts p where lower(p.title) like concat('%', ?, '%') offset ? limit ?";
+        String sql = "select p.*, u.username from posts p inner join users u on u.id = p.user_id where lower(p.title) like concat('%', ?, '%') offset ? limit ?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -66,6 +66,7 @@ public class PostDao extends BaseDao {
                 String content = rs.getString("content");
                 Date createdAt = rs.getDate("created_at");
                 Integer categoryId = rs.getInt("category_id");
+                String userName = rs.getString("username");
 
                 Post post = new Post();
                 post.setId(id);
@@ -76,6 +77,7 @@ public class PostDao extends BaseDao {
                 post.setSummary(summary);
                 post.setContent(content);
                 post.setCreatedAt(createdAt);
+                post.setUserName(userName);
 
                 posts.add(post);
             }
@@ -144,8 +146,8 @@ public class PostDao extends BaseDao {
         }
     }
 
-    public Post findById(String postId) {
-        String sql = "select * from posts p where id = ?";
+    public List<Post> searchByUserId(int uid, int offset, int limit) {
+        String sql = "select * from posts p where p.user_id = ? offset ? limit ?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -154,7 +156,9 @@ public class PostDao extends BaseDao {
             conn = getDefaultConnection();
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(sql);
-            ps.setInt(1, Integer.parseInt(postId));
+            ps.setInt(1, uid);
+            ps.setInt(2, offset);
+            ps.setInt(3, limit);
             rs = ps.executeQuery();
             while (rs.next()) {
 
@@ -176,6 +180,56 @@ public class PostDao extends BaseDao {
                 post.setSummary(summary);
                 post.setContent(content);
                 post.setCreatedAt(createdAt);
+
+                posts.add(post);
+            }
+
+            return posts;
+        } catch (SQLException ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            rollback(conn);
+            return null;
+        } finally {
+            closeObject(ps);
+            closeObject(conn);
+            closeObject(rs);
+        }
+    }
+
+    public Post findById(String postId) {
+        String sql = "select p.*, u.username from posts p inner join users u on u.id = p.user_id where p.id = ?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<Post> posts = new ArrayList<>();
+        try {
+            conn = getDefaultConnection();
+            conn.setAutoCommit(false);
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, Integer.parseInt(postId));
+            rs = ps.executeQuery();
+            while (rs.next()) {
+
+                Integer id = rs.getInt("id");
+                Integer userId = rs.getInt("user_id");
+                String title = rs.getString("title");
+                String thumbnail = rs.getString("thumbnail");
+                String summary = rs.getString("summary");
+                String content = rs.getString("content");
+                Date createdAt = rs.getDate("created_at");
+                Integer categoryId = rs.getInt("category_id");
+                String username = rs.getString("username");
+
+                Post post = new Post();
+                post.setId(id);
+                post.setUserId(userId);
+                post.setCategoryId(categoryId);
+                post.setThumbnail(thumbnail);
+                post.setTitle(title);
+                post.setSummary(summary);
+                post.setContent(content);
+                post.setCreatedAt(createdAt);
+                post.setUserName(username);
 
                 posts.add(post);
             }
