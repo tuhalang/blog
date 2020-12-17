@@ -297,6 +297,54 @@ public class PostDao extends BaseDao {
         }
     }
 
+    public void like(Integer userId, Integer postId, Integer type){
+        String sql = "insert into interact(post_id, user_id, type) values (?, ?, ?)";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try{
+            conn = getDefaultConnection();
+            conn.setAutoCommit(false);
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, postId);
+            ps.setInt(2, userId);
+            ps.setInt(3, type);
+            ps.executeUpdate();
+        }catch (SQLException ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            rollback(conn);
+        } finally {
+            closeObject(ps);
+            closeObject(conn);
+        }
+    }
+
+    public Long countLike(Integer postId){
+        String sql = "select count(*) as count from interact where post_id = ? and type = 1";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Long count = 0l;
+        try{
+            conn = getDefaultConnection();
+            conn.setAutoCommit(false);
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, postId);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                count = rs.getLong("count");
+            }
+        }catch (SQLException ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            rollback(conn);
+            return 0l;
+        } finally {
+            closeObject(ps);
+            closeObject(conn);
+            closeObject(rs);
+        }
+        return count;
+    }
+
 
     public List<Post> getPosts(Integer categoryId, int offset, int limit) {
         String sql = "select * from posts p where p.category_id = ? offset ? limit ?";
