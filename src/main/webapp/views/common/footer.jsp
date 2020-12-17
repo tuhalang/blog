@@ -9,5 +9,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="<c:url value="/static/css/common/footer.css"/>">
 <div class="footer">
-    <label>Copyright By@Lazzy - 2020</label>
+    <label>Copyright By@Lazyyy - 2020</label>
 </div>

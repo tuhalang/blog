@@ -34,13 +34,13 @@
             <i class="fas fa-user"></i>
             <div>
                 <span>${owner.getUsername()}</span>
-                <span>16 bài viết</span>
+                <span>${numOfPosts} bài viết</span>
             </div>
         </div>
-        <div id="table-of-content">
-            <span>Mục lục</span>
-            <div id="toc"></div>
-        </div>
+<%--        <div id="table-of-content">--%>
+<%--            <span>Mục lục</span>--%>
+<%--            <div id="toc"></div>--%>
+<%--        </div>--%>
     </div>
 </div>
 <jsp:include page="common/footer.jsp"></jsp:include>

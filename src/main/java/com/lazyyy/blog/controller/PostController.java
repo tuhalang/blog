@@ -24,8 +24,12 @@ public class PostController extends HttpServlet {
         String id = request.getParameter("id");
         Post post = PostService.getInstance().getPostById(id);
         User user = UserService.getInstance().getById(post.getUserId());
+        Long numOfPosts = UserService.getInstance().countPosts(user.getId());
+        Long like = PostService.getInstance().countLike(post.getId());
         request.setAttribute("post", post);
         request.setAttribute("owner", user);
+        request.setAttribute("numOfPosts", numOfPosts);
+        request.setAttribute("numOfLikes", like);
         request.getRequestDispatcher("/views/PostInstance.jsp").forward(request, response);
     }
 

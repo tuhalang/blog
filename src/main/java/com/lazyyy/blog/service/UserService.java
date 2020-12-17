@@ -62,4 +62,8 @@ public class UserService {
         User user = UserDao.getInstance().findUserById(id);
         return user;
     }
+
+    public Long countPosts(Integer userId){
+        return UserDao.getInstance().countPosts(userId);
+    }
 }
