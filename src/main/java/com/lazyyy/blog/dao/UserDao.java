@@ -262,4 +262,30 @@ public class UserDao extends BaseDao {
         Long endTime = System.currentTimeMillis();
         LOGGER.debug("End save, time execute: " + (endTime - startTime) + " (ms)");
     }
+
+    public Long countPosts(Integer userId){
+        String sql = "select count(*) as count from posts where user_id = ?";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Long count = 0l;
+        try {
+            conn = getDefaultConnection();
+            conn.setAutoCommit(false);
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, userId);
+            rs = ps.executeQuery();
+            if(rs.next()){
+                count = rs.getLong("count");
+            }
+        } catch (SQLException ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            rollback(conn);
+        } finally {
+            closeObject(ps);
+            closeObject(rs);
+            closeObject(conn);
+        }
+        return count;
+    }
 }
