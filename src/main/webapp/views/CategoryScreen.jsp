@@ -20,7 +20,7 @@
 
 <div class="container">
     <div class="info-category">
-        <img src="https://s3-ap-southeast-1.amazonaws.com/kipalog.com/css.png_cqep5dt185"/>
+        <img src="${categ.getImage()}"/>
         <div class="categ">
             <h2>${categ.getName()}</h2>
             <p><span>${categ.getNumOfPosts()}</span> bài viết</p>

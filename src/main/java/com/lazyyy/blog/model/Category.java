@@ -18,6 +18,7 @@ public class Category {
     private String code;
     private Date createdAt;
     private Integer numOfPosts;
+    private String image;
 
     public Integer getNumOfPosts() {
         return numOfPosts;
@@ -58,7 +59,12 @@ public class Category {
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
-    
-    
-    
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 }

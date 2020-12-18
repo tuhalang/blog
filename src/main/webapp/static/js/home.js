@@ -34,15 +34,17 @@ function goToSettings() {
 
 function searchPost(self) {
     var xhr = new XMLHttpRequest();
+    debugger
     xhr.onload = function () {
-        var data = JSON.parse(xhr.responseText);
-        var listpost = document.getElementsByClassName("list-post");
-        var subpost = document.getElementsByClassName("sub_post");
-        var css = listpost[0].getElementsByTagName("link");
-        var js = listpost[0].getElementsByTagName("script");
-        var tempsubpost = subpost[0];
-        var tempcss = css[0];
-        var tempjs = js[0];
+        debugger
+        let data = JSON.parse(xhr.responseText);
+        let listpost = document.getElementsByClassName("list-post");
+        let subpost = document.getElementsByClassName("sub_post");
+        let css = listpost[0].getElementsByTagName("link");
+        let js = listpost[0].getElementsByTagName("script");
+        let tempsubpost = subpost[0];
+        let tempcss = css[0];
+        let tempjs = js[0];
 
         for (let i = 0; i < subpost.length; i++) {
             subpost[i].remove();
@@ -59,7 +61,7 @@ function searchPost(self) {
             i -= 1;
         }
         for (let i = 0; i < data.length; i++) {
-            var tmp = tempsubpost.cloneNode(true);
+            let tmp = tempsubpost.cloneNode(true);
             tmp.setAttribute( "onclick", "return goToPost(" + data[i].id + ");")
             tmp.getElementsByClassName("title-des")[0].textContent = data[i].title
             tmp.getElementsByClassName("subcontent-des")[0].textContent = data[i].summary
@@ -73,7 +75,7 @@ function searchPost(self) {
     xhr.onerror = function () {
     } // failure case
 
-    var fd = new FormData(self);
+    let fd = new FormData(self);
     fd.append("offset", 0);
     fd.append("limit", 6);
 

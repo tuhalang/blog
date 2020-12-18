@@ -297,11 +297,11 @@ public class PostDao extends BaseDao {
         }
     }
 
-    public void like(Integer userId, Integer postId, Integer type){
+    public void like(Integer userId, Integer postId, Integer type) {
         String sql = "insert into interact(post_id, user_id, type) values (?, ?, ?)";
         Connection conn = null;
         PreparedStatement ps = null;
-        try{
+        try {
             conn = getDefaultConnection();
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(sql);
@@ -309,7 +309,8 @@ public class PostDao extends BaseDao {
             ps.setInt(2, userId);
             ps.setInt(3, type);
             ps.executeUpdate();
-        }catch (SQLException ex) {
+            conn.commit();
+        } catch (SQLException ex) {
             LOGGER.error(ex.getMessage(), ex);
             rollback(conn);
         } finally {
@@ -318,22 +319,49 @@ public class PostDao extends BaseDao {
         }
     }
 
-    public Long countLike(Integer postId){
+    public boolean check(Integer userId, Integer postId, Integer type) {
+        String sql = "select * from interact i where i.user_id = ? & i.post_id = ? & i.type = ?";
+
+        Connection conn = null;
+        ResultSet rs = null;
+        PreparedStatement ps = null;
+        try {
+            conn = getDefaultConnection();
+            conn.setAutoCommit(false);
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, userId);
+            ps.setInt(2, postId);
+            ps.setInt(3, type);
+            rs = ps.executeQuery();
+            if (rs.next()) return true;
+            else return false;
+        } catch (SQLException ex) {
+            LOGGER.error(ex.getMessage(), ex);
+            rollback(conn);
+            return false;
+        } finally {
+            closeObject(ps);
+            closeObject(conn);
+            return true;
+        }
+    }
+
+    public Long countLike(Integer postId) {
         String sql = "select count(*) as count from interact where post_id = ? and type = 1";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         Long count = 0l;
-        try{
+        try {
             conn = getDefaultConnection();
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(sql);
             ps.setInt(1, postId);
             rs = ps.executeQuery();
-            if(rs.next()){
+            if (rs.next()) {
                 count = rs.getLong("count");
             }
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             LOGGER.error(ex.getMessage(), ex);
             rollback(conn);
             return 0l;

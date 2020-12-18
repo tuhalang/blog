@@ -73,11 +73,15 @@ public class PostService {
         }
     }
 
-    public void like(Integer userId, Integer postId, Integer type){
+    public void like(Integer userId, Integer postId, Integer type) {
         PostDao.getInstance().like(userId, postId, type);
     }
 
-    public Long countLike(Integer postId){
+    public boolean check(Integer userId, Integer postId, Integer type) {
+        return PostDao.getInstance().check(userId, postId, type);
+    }
+
+    public Long countLike(Integer postId) {
         return PostDao.getInstance().countLike(postId);
     }
 

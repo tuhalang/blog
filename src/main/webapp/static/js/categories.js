@@ -33,6 +33,7 @@ function searchCategory(self) {
             tmp.setAttribute("onclick", "return goToCategory(" + data[i].id + ");");
             tmp.getElementsByClassName("name-tags")[0].textContent = data[i].name;
             tmp.getElementsByTagName("span")[0].textContent = data[i].numOfPosts;
+            tmp.getElementsByTagName("img")[0].src = data[i].image;
             listtags[0].appendChild(tmp);
         }
 

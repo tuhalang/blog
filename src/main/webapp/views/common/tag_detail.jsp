@@ -9,10 +9,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="<c:url value="/static/css/common/tag_detail.css"/>">
 <div class="tag-detail" onclick="return goToCategory(${param.id})">
-    <c:if test="${param.code != null}">
-        <img src="<c:url value="${param.code}"/>"/>
+    <c:if test="${param.image != null}">
+        <img src="<c:url value="${param.image}"/>"/>
     </c:if>
-    <c:if test="${param.code == null}">
+    <c:if test="${param.image == null}">
         <img src="https://resources.workable.com/wp-content/uploads/2016/01/category-manager-640x230.jpg"/>
     </c:if>
     <div>

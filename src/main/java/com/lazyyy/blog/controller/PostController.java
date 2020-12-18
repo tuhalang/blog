@@ -21,6 +21,7 @@ import java.util.List;
 public class PostController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String id = request.getParameter("id");
         Post post = PostService.getInstance().getPostById(id);
         User user = UserService.getInstance().getById(post.getUserId());
@@ -35,6 +36,7 @@ public class PostController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
         String postName = request.getParameter("postName");
         int offset = Integer.parseInt(request.getParameter("offset"));
         int limit = Integer.parseInt(request.getParameter("limit"));
@@ -42,7 +44,7 @@ public class PostController extends HttpServlet {
 
         ObjectMapper objectMapper = new ObjectMapper();
         String listPost = objectMapper.writeValueAsString(posts);
-
+        response.setCharacterEncoding("UTF-8");
         response.getWriter().print(listPost);
         response.getWriter().flush();
 

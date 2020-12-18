@@ -15,21 +15,21 @@ import java.util.Date;
 import java.util.List;
 
 /**
- *
  * @author hungpv
  */
-public class CategoryDao extends BaseDao{
+public class CategoryDao extends BaseDao {
     private static final Logger LOGGER = LogManager.getLogger(CategoryDao.class);
     private static CategoryDao categoryDao;
     private static final Object MUTEX = new Object();
-    
-    private CategoryDao(){}
-    
-    
-    public static CategoryDao getInstance(){
-        if(categoryDao == null){
-            synchronized(MUTEX){
-                if(categoryDao == null){
+
+    private CategoryDao() {
+    }
+
+
+    public static CategoryDao getInstance() {
+        if (categoryDao == null) {
+            synchronized (MUTEX) {
+                if (categoryDao == null) {
                     categoryDao = new CategoryDao();
                 }
             }
@@ -37,24 +37,25 @@ public class CategoryDao extends BaseDao{
         return categoryDao;
     }
 
-    public List<Category> searchByName(String key){
+    public List<Category> searchByName(String key) {
         String sql = "select c.*, (select count(*) from posts p where p.category_id = c.id) as num_of_posts from category c where lower(c.name) like CONCAT('%', ?, '%')";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<Category> categories = new ArrayList<>();
-        try{
+        try {
             conn = getDefaultConnection();
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(sql);
             ps.setString(1, key);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
 
                 Integer id = rs.getInt("id");
                 String name = rs.getString("name");
                 String code = rs.getString("code");
                 Date createdAt = rs.getDate("created_at");
+                String image = rs.getString("image");
                 Integer numOfPosts = rs.getInt("num_of_posts");
 
                 Category category = new Category();
@@ -62,41 +63,43 @@ public class CategoryDao extends BaseDao{
                 category.setName(name);
                 category.setCode(code);
                 category.setCreatedAt(createdAt);
+                category.setImage(image);
                 category.setNumOfPosts(numOfPosts);
 
                 categories.add(category);
             }
 
             return categories;
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             LOGGER.error(ex.getMessage(), ex);
             rollback(conn);
             return null;
-        }finally{
+        } finally {
             closeObject(ps);
             closeObject(conn);
             closeObject(rs);
         }
     }
 
-    public Category findById(int categId){
+    public Category findById(int categId) {
         String sql = "select c.*,(select count(*) from posts p where p.category_id = c.id) as num_of_posts from category c where c.id = ?";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<Category> categories = new ArrayList<>();
-        try{
+        try {
             conn = getDefaultConnection();
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(sql);
             ps.setInt(1, categId);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
 
                 Integer id = rs.getInt("id");
                 String name = rs.getString("name");
                 String code = rs.getString("code");
                 Date createdAt = rs.getDate("created_at");
+                String image = rs.getString("image");
                 Integer numOfPosts = rs.getInt("num_of_posts");
 
                 Category category = new Category();
@@ -104,40 +107,42 @@ public class CategoryDao extends BaseDao{
                 category.setName(name);
                 category.setCode(code);
                 category.setCreatedAt(createdAt);
+                category.setImage(image);
                 category.setNumOfPosts(numOfPosts);
 
                 categories.add(category);
             }
 
             return categories.get(0);
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             LOGGER.error(ex.getMessage(), ex);
             rollback(conn);
             return null;
-        }finally{
+        } finally {
             closeObject(ps);
             closeObject(conn);
             closeObject(rs);
         }
     }
 
-    public List<Category> findAll(){
+    public List<Category> findAll() {
         String sql = "select c.*, (select count(*) from posts p where p.category_id = c.id) as num_of_posts from category c ;";
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<Category> categories = new ArrayList<>();
-        try{
+        try {
             conn = getDefaultConnection();
             conn.setAutoCommit(false);
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            while(rs.next()){
+            while (rs.next()) {
 
                 Integer id = rs.getInt("id");
                 String name = rs.getString("name");
                 String code = rs.getString("code");
                 Date createdAt = rs.getDate("created_at");
+                String image = rs.getString("image");
                 Integer numOfPosts = rs.getInt("num_of_posts");
 
                 Category category = new Category();
@@ -145,17 +150,18 @@ public class CategoryDao extends BaseDao{
                 category.setName(name);
                 category.setCode(code);
                 category.setCreatedAt(createdAt);
+                category.setImage(image);
                 category.setNumOfPosts(numOfPosts);
 
                 categories.add(category);
             }
 
             return categories;
-        }catch(SQLException ex){
+        } catch (SQLException ex) {
             LOGGER.error(ex.getMessage(), ex);
             rollback(conn);
             return null;
-        }finally{
+        } finally {
             closeObject(ps);
             closeObject(conn);
             closeObject(rs);

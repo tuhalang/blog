@@ -21,7 +21,8 @@
 <div class="container">
     <div class="fill-space-post">
         <div class="action-post">
-            <i class="far fa-thumbs-up" onclick="return interactPost(${post.getId()},'1');"></i>
+            <i class="far fa-thumbs-up" id="action-like" onclick="return interactPost(${post.getId()},'1');"></i>
+            <p id="amount-like">${numOfLikes} like</p>
             <%--            <i class="fas fa-comment-dots"></i>--%>
         </div>
     </div>
@@ -49,5 +50,9 @@
     contentP = `<c:out value="${post.getContent()}"/>`;
 </script>
 <script src="<c:url value="/static/js/post_instance.js"/> "></script>
+<script>
+    checkInteract(${post.getId()}, "1")
+    <%--getAmountInteract(${post.getId()}, "1")--%>
+</script>
 </body>
 </html>

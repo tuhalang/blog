@@ -74,7 +74,11 @@ body {
     justify-content: center;
     display: flex;
     margin: 10px 0;
-    color: red;
+    color: gray;
+}
+
+.action-post p{
+    margin: 0;
 }
 
 .action-post i:hover,
