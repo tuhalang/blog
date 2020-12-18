@@ -12,6 +12,11 @@
 <head>
     <title>Home</title>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1"/>
+    <link rel="icon" type="image/png" sizes="192x192"  href="<c:url value="/static/img/android-icon-192x192.png"/>"/>
+    <link rel="icon" type="image/png" sizes="32x32" href="<c:url value="/static/img/favicon-32x32.png"/>"/>
+    <link rel="icon" type="image/png" sizes="96x96" href="<c:url value="/static/img/favicon-96x96.png"/>"/>
+    <link rel="icon" type="image/png" sizes="16x16" href="<c:url value="/static/img/favicon-16x16.png"/>"/>
+    <link rel="manifest" href="<c:url value="/static/img/manifest.json"/>"/>
     <link rel="stylesheet" href="<c:url value="/static/css/home.css"/>"/>
     <link rel="stylesheet" href="<c:url value="/static/css/fontawesome-free-5.15.1-web/css/all.css"/>"/>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&family=Roboto:ital@1&display=swap"
