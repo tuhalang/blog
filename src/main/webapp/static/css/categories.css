@@ -1,7 +1,11 @@
-body {
+html,body {
     margin: 0;
     height: 100%;
     font-family: 'Roboto', sans-serif;
+}
+
+.container{
+    min-height: 100%;
 }
 
 .head-tags{
@@ -23,10 +27,13 @@ body {
     justify-content: center;
     align-items: center;
     display: flex;
+    height: 50px;
 }
 
 .list-tags{
     display: flex;
-    flex-wrap: wrap-reverse;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
 }

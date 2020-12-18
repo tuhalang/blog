@@ -60,13 +60,12 @@
 
 .dropdown-content i{
     margin: 6px;
-}
-
-.dropdown-content i {
     width: 24px;
+    cursor: pointer;
 }
 
 .dropdown:hover .dropdown-content{
     display: flex;
     height: 100px;
+    cursor: pointer;
 }

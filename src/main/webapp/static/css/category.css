@@ -1,4 +1,4 @@
-body {
+html,body {
     margin: 0;
     height: 100%;
     font-family: 'Roboto', sans-serif;
@@ -6,6 +6,7 @@ body {
 
 .container {
     padding: 20px 8%;
+    min-height: 100%;
 }
 
 #divider {

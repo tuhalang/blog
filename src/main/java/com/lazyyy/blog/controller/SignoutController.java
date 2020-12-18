@@ -17,6 +17,7 @@ public class SignoutController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         SessionUtils.getInstance().removeValue(req, "USERNAME");
+        SessionUtils.getInstance().removeValue(req, "USER_ID");
         req.getRequestDispatcher("/home").forward(req, resp);
     }
 

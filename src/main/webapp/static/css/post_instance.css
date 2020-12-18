@@ -1,4 +1,4 @@
-body {
+html,body {
     margin: 0;
     height: 100%;
     font-family: 'Roboto', sans-serif;
@@ -9,6 +9,7 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: flex-start;
+    min-height: 100%;
 }
 
 .container-post {
@@ -151,6 +152,11 @@ body {
     }
 
     #content-main {
+        width: 100%;
+        margin: 0;
+    }
+
+    .container-post{
         width: 80%;
     }
 }

@@ -21,7 +21,7 @@
 <div class="container">
     <div class="fill-space-post">
         <div class="action-post">
-            <i class="far fa-thumbs-up" id="action-like" onclick="return interactPost(${post.getId()},'1');"></i>
+            <i class="far fa-thumbs-up" id="action-like" onclick="return interactPost(${post.getId()},'1',${USER_ID});"></i>
             <p id="amount-like">${numOfLikes} like</p>
             <%--            <i class="fas fa-comment-dots"></i>--%>
         </div>

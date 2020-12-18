@@ -8,6 +8,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <link rel="stylesheet" href="<c:url value="/static/css/common/footer.css"/>">
-<div class="footer">
+<footer class="footer">
     <label>Copyright By@Lazyyy - 2020</label>
-</div>
+</footer>

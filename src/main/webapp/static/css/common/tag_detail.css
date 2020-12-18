@@ -5,6 +5,9 @@
     align-items: flex-start;
     justify-content: flex-start;
     margin: 12px;
+    height: 100px;
+    flex: 1 1 150px;
+    cursor: pointer;
 }
 
 .tag-detail img{

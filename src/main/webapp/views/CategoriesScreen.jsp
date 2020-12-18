@@ -16,38 +16,41 @@
           rel="stylesheet">
 </head>
 <body>
-<jsp:include page="common/header.jsp"></jsp:include>
-<div class="head-tags">
-    <div style="font-size: 18px;font-weight: 550;">
-        <c:if test = "${categoryName != null}">
-        <p style="font-style: italic;"> Kết quả tìm kiếm cho: <b>${categoryName}</b><p>
-        </c:if>
+<div class="container">
+    <jsp:include page="common/header.jsp"></jsp:include>
+    <div class="head-tags">
+        <div style="font-size: 18px;font-weight: 550;">
+            <c:if test="${categoryName != null}">
+            <p style="font-style: italic;"> Kết quả tìm kiếm cho: <b>${categoryName}</b>
+            <p>
+                </c:if>
+        </div>
+    </div>
+    <div class="head-tags">
+        <div style="font-size: 18px;font-weight: 550;">Danh Mục(${categoryList.size()})</div>
+        <div class="space-fill"></div>
+        <form action="<c:url value="/categories"/>" method="post" onsubmit="return searchCategory(this)">
+            <div class="search-categ">
+                <input name="categoryName" value="${categoryName}"/>
+                <button type="submit" style="display: none">
+                    search
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="list-tags" style="min-height: 75vh;">
+        <c:forEach items="${categoryList}" var="category">
+            <jsp:include page="common/tag_detail.jsp">
+                <jsp:param name="name" value="${category.getName()}"/>
+                <jsp:param name="code" value="${category.getCode()}"/>
+                <jsp:param name="image" value="${category.getImage()}"/>
+                <jsp:param name="numOfPosts" value="${category.getNumOfPosts()}"/>
+                <jsp:param name="id" value="${category.getId()}"/>
+            </jsp:include>
+        </c:forEach>
     </div>
 </div>
-<div class="head-tags">
-    <div style="font-size: 18px;font-weight: 550;">Danh Mục(${categoryList.size()}) </div>
-    <div class="space-fill"></div>
-    <form action="<c:url value="/categories"/>" method="post" onsubmit="return searchCategory(this)">
-        <div class="search-categ">
-            <input name="categoryName" value="${categoryName}"/>
-            <button type="submit" style="display: none">
-                search
-            </button>
-        </div>
-    </form>
-</div>
-<div class="list-tags" style="min-height: 75vh;">
-    <c:forEach items="${categoryList}" var="category">
-        <jsp:include page="common/tag_detail.jsp">
-            <jsp:param name="name" value="${category.getName()}"/>
-            <jsp:param name="code" value="${category.getCode()}"/>
-            <jsp:param name="image" value="${category.getImage()}"/>
-            <jsp:param name="numOfPosts" value="${category.getNumOfPosts()}"/>
-            <jsp:param name="id" value="${category.getId()}"/>
-        </jsp:include>
-    </c:forEach>
-</div>
-<script src="<c:url value="/static/js/categories.js"/>"></script>
 <jsp:include page="common/footer.jsp"></jsp:include>
+<script src="<c:url value="/static/js/categories.js"/>"></script>
 </body>
 </html>

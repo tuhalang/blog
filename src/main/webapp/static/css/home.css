@@ -1,5 +1,5 @@
 @charset "UTF-8";
-body {
+html,body {
     margin: 0;
     height: 100%;
     background-color: #212529;
@@ -170,7 +170,7 @@ nav:hover .dropdown {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    min-height: 800px;
+    min-height: 100%;
 }
 
 .list-post {
@@ -534,5 +534,54 @@ nav:hover .dropdown {
     }
     100% {
         transform: rotate(405deg);
+    }
+}
+
+
+/*computer*/
+@media screen and (max-width: 1024px) {
+    #welcome{
+        flex-direction: column;
+        height: 1000px;
+        padding: 5%;
+    }
+
+    #welcome .banner-image{
+        width: 100%;
+        height: 50%;
+    }
+    #welcome .title-welcome{
+        width: 100%;
+        height: 50%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .list-categories{
+        display: none;
+    }
+    .list-post{
+        width: 90%;
+    }
+}
+
+/*phone max-device-width*/
+@media only screen and (max-device-width: 900px){
+    #welcome{
+        flex-direction: column;
+        height: 1000px;
+        padding: 5%;
+    }
+
+    #welcome .banner-image{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #welcome .title-welcome{
+        width: 100%;
+        height: 50%;
     }
 }

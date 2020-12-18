@@ -11,8 +11,9 @@ var mdHtml = markdownit("commonmark")
 document.getElementById("content-main").innerHTML = mdHtml.render(inp)
 document.getElementById("toc").innerHTML = mdHtml.render(toc.join("\n"))
 
-function interactPost(postId, type = '1') {
+function interactPost(postId, type = '1',userId) {
     if (document.getElementById("action-like").style.color == "red") return;
+    if (userId == null) return;
     let data = new FormData();
     data.append("postId", postId)
     data.append("type", type)
