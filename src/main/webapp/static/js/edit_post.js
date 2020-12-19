@@ -44,11 +44,12 @@ function savePost() {
     var xhr = new XMLHttpRequest();
     xhr.overrideMimeType("charset=utf-8");
     xhr.onload = function () {
-        if (xhr.responseText == 200) {
+        if (xhr.responseText != 0 && xhr.responseText != -1) {
             alert("Lưu thành công")
-        } else if (xhr.responseText == 500) {
+            location.replace("/post?id="+xhr.responseText);
+        } else if (xhr.responseText == 0) {
             alert("Bải viết không hợp lệ")
-        } else if (xhr.responseText == 404) {
+        } else if (xhr.responseText == -1) {
             alert("Lưu thất bại, lỗi hệ thống")
         }
     } // success case

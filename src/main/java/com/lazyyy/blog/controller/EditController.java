@@ -37,13 +37,13 @@ public class EditController extends HttpServlet {
         String summary = req.getParameter("summary");
         String categoryId = req.getParameter("categoryId");
         if (categoryId == "" || title == "" || content == "") {
-            resp.getWriter().print(500);
+            resp.getWriter().print(0);
             resp.getWriter().flush();
             return;
         }
 
         content.replaceAll("```", "<code>");
-        boolean isSave = PostService.getInstance().savePost(new Post(
+        Long key = PostService.getInstance().savePost(new Post(
                 (Integer) SessionUtils.getInstance().getValue(req, "USER_ID"),
                 Integer.parseInt(categoryId),
                 title,
@@ -51,11 +51,11 @@ public class EditController extends HttpServlet {
                 summary,
                 content
         ));
-        if (isSave) {
-            resp.getWriter().print(200);
+        if (key != -1) {
+            resp.getWriter().print(key);
             resp.getWriter().flush();
         } else {
-            resp.getWriter().print(404);
+            resp.getWriter().print(-1);
             resp.getWriter().flush();
         }
     }

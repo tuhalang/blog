@@ -44,13 +44,14 @@ public class PostService {
         return PostDao.getInstance().searchByUserId(userId, offset, limit);
     }
 
-    public boolean savePost(Post post) {
+    public Long savePost(Post post) {
+        Long key = -1l;
         try {
-            PostDao.getInstance().save(post);
+            key = PostDao.getInstance().save(post);
         } catch (Exception e) {
-            return false;
+            LOGGER.error(e.getMessage(),e);
         }
-        return true;
+        return key;
     }
 
     public List<Post> searchPost(String key, int offset, int limit) {

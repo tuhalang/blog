@@ -11,10 +11,7 @@ import com.lazyyy.blog.model.Post;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -473,15 +470,17 @@ public class PostDao extends BaseDao {
     }
 
 
-    public void save(Post post) {
+    public Long save(Post post) {
         String sql = "insert into posts (category_id, content, summary, thumbnail, title, user_id)\n" +
                 "values (?, ?, ?, ?, ?, ?)";
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
+        Long key = -1l;
         try {
             conn = getDefaultConnection();
             conn.setAutoCommit(false);
-            ps = conn.prepareStatement(sql);
+            ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, post.getCategoryId());
             ps.setString(2, post.getContent());
             ps.setString(3, post.getSummary());
@@ -490,12 +489,20 @@ public class PostDao extends BaseDao {
             ps.setInt(6, post.getUserId());
             ps.executeUpdate();
             conn.commit();
+
+            rs = ps.getGeneratedKeys();
+            if(rs.next()){
+                key = rs.getLong(1);
+            }
+
         } catch (SQLException ex) {
             LOGGER.error(ex.getMessage(), ex);
             rollback(conn);
         } finally {
             closeObject(ps);
             closeObject(conn);
+            closeObject(rs);
         }
+        return key;
     }
 }
