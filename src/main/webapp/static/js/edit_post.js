@@ -55,7 +55,7 @@ function savePost() {
     xhr.onerror = function () {
         alert("Lưu thất bại")
     } // failure case
-    var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/secure/edit";
+    var url = "/secure/edit";
     xhr.open('POST', url, true);
     xhr.send(data);
 }

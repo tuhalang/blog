@@ -1,21 +1,21 @@
 function goToProfile() {
-    var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/secure/profile";
+    var url = "/secure/profile";
     window.location.href = url
 }
 
 function goToSettings() {
-    var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/secure/settings";
+    var url = "/secure/settings";
     window.location.href = url
 }
 
 function logout() {
     var xhr = new XMLHttpRequest();
     xhr.onload = function () {
-        location.replace(window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/home")
+        location.replace("/home")
     } // success case
     xhr.onerror = function () {
     } // failure case
-    var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/auth/signOut";
+    var url = "/auth/signOut";
     xhr.open('GET', url, true);
     xhr.send();
 }

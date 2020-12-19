@@ -25,7 +25,7 @@ function interactPost(postId, type = '1',userId) {
     } // success case
     xhr.onerror = function () {
     } // failure case
-    let url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/secure/interact/like";
+    let url = "/secure/interact/like";
     xhr.open('POST', url, true);
     xhr.send(data);
 }
@@ -40,7 +40,7 @@ function checkInteract(postId, type = "1") {
     } // success case
     xhr.onerror = function () {
     } // failure case
-    let url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/secure/interact/like";
+    let url = "/secure/interact/like";
     xhr.open('GET', url + data, true);
     xhr.send();
 }
@@ -56,7 +56,7 @@ function getAmountInteract(postId, type = "1") {
     } // success case
     xhr.onerror = function () {
     } // failure case
-    let url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/secure/interact/like";
+    let url = "/secure/interact/like";
     xhr.open('GET', url + data, true);
     xhr.send();
 }

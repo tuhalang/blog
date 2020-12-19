@@ -95,7 +95,7 @@ function onUpdateInfo() {
     var fd = new FormData();
     fd.append("type", "username");
     fd.append("newUsername", uname)
-    var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/secure/profile";
+    var url = "/secure/profile";
     xhr.open('POST', url, true);
     xhr.send(fd);
     return false;
@@ -156,7 +156,7 @@ function changeAvatar(){
     fd.append("type", "avatar");
     fd.append("url", val);
 
-    var action = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/secure/profile";
+    var action = "/secure/profile";
 
     xhr.open('POST', action, true);
     xhr.send(fd);

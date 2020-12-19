@@ -18,17 +18,17 @@ function onEdit(val){
 
 function goToCategory(id){
     var data = "?id=" + id
-    var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/category";
+    var url = "/category";
     window.location.href = url + data
 }
 
 function goToProfile() {
-    var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/secure/profile";
+    var url = "/secure/profile";
     window.location.href = url
 }
 
 function goToSettings() {
-    var url = window.location.pathname.substring(0, window.location.pathname.indexOf("/", 2)) + "/secure/settings";
+    var url = "/secure/settings";
     window.location.href = url
 }
 
