@@ -22,8 +22,8 @@
         <img src="<c:url value="/static/img/logo.png"/>" alt="Lazzy"/>
     </div>
     <div class="menu">
-        <div><a href="<c:url value="/home"/>">Home</a></div>
-        <div><a href="<c:url value="/categories"/>">Categories</a></div>
+        <div><a href="<c:url value="/home"/>">Trang chủ</a></div>
+        <div><a href="<c:url value="/categories"/>">Danh mục</a></div>
         <div class="dropdown">
             <a href="#"><i class="fas fa-user-circle"></i></a>
             <div class="dropdown-content">

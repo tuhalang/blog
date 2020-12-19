@@ -4,6 +4,7 @@ import com.lazyyy.blog.utils.SessionUtils;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class SecurityFilter implements Filter {
@@ -22,8 +23,8 @@ public class SecurityFilter implements Filter {
             if(usernameObj != null ){
                 filterChain.doFilter(servletRequest, servletResponse);
             }else{
-                servletResponse.getWriter().print(401);
-                servletResponse.getWriter().flush();
+                HttpServletResponse response = (HttpServletResponse) servletResponse;
+                response.sendRedirect(request.getContextPath()+"/views/errors/403.jsp");
             }
         }else {
             filterChain.doFilter(servletRequest, servletResponse);

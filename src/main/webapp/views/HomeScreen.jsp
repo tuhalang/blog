@@ -44,13 +44,13 @@
             <i class="fas fa-stream" id="menu"></i>
         </div>
         <ul class="dropdown">
-            <li><a href="#">Home</a></li>
-            <li><a href="<c:url value="/categories"/>">Categories</a></li>
+            <li><a href="#">Trang chủ</a></li>
+            <li><a href="<c:url value="/categories"/>">Danh mục</a></li>
             <c:if test="${USERNAME==null}">
-                <li id="login" onclick="return showLogin();"><a href="#">Login</a></li>
+                <li id="login" onclick="return showLogin();"><a href="#">Đăng nhập</a></li>
             </c:if>
             <c:if test="${USERNAME!=null}">
-                <li><a href="#" onclick="return logout();">Logout</a></li>
+                <li><a href="#" onclick="return logout();">Đăng kí</a></li>
                 <li><a href="<c:url value="/secure/profile"/>" onclick="return goToProfile();">Quản lí tài khoản</a>
                 </li>
             </c:if>
@@ -73,7 +73,7 @@
                     <i class="fab fa-searchengin"></i>
                     <input placeholder="Search here" type="text" id="search-input" name="postName"/>
                     <button type="submit" style="display: none">
-                        search
+                        Tìm kiếm
                     </button>
                 </div>
             </form>
