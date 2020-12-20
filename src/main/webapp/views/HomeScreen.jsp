@@ -50,7 +50,7 @@
                 <li id="login" onclick="return showLogin();"><a href="#">Đăng nhập</a></li>
             </c:if>
             <c:if test="${USERNAME!=null}">
-                <li><a href="#" onclick="return logout();">Đăng kí</a></li>
+                <li><a href="#" onclick="return logout();">Đăng xuất</a></li>
                 <li><a href="<c:url value="/secure/profile"/>" onclick="return goToProfile();">Quản lí tài khoản</a>
                 </li>
             </c:if>
