@@ -266,7 +266,7 @@ nav:hover .dropdown {
     height: 100%;
     margin-top: -100%;
     transform: rotateZ(45deg);
-    z-index: -1;
+    z-index: 0;
 }
 
 .shooting_star {

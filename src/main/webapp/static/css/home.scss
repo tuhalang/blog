@@ -41,19 +41,19 @@ html,body{
     height: 100%;
 }
 .banner-image-1{
-    transform: translate3d(0px, 0px, 0px) rotate(0.0001deg);
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
+    transform: translate3d(0px, 0px, 0px) rotate(0.0001deg);//translate3d di chuyen theo khong gian 3 chieu vs x,y,z
+    transform-style: preserve-3d;//cách các phần tử lồng nhau trong không gian 3d// preserver -> giữ nguyên vị trí child element 3d của nó
+    backface-visibility: hidden;//ẩn mặt sau của phần từ div đã xoay
     position: relative;
-    pointer-events: none;
-    -webkit-mask-image: url(../img/banner_backg.svg);
+    pointer-events: none;// phần tử này k phản ứng vs các sự kiện con trỏ
+    -webkit-mask-image: url(../img/banner_backg.svg);// mask cho image của chính nó
     -webkit-mask-position: center center;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-size: cover;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    will-change: transform;
+    object-fit: cover;//tỉ lệ khung hình giữ nguyên và phần thừa được cắt bớt
+    will-change: transform;// thông báo cho trình duyệt về những thuộc tính có thể tốn kém để tối ưu hóa
 }
 
 .title-welcome{
@@ -82,12 +82,12 @@ $shooting-time: 3000ms;
     border-radius: 999px;
     filter: drop-shadow(0 0 6px rgba(105, 155, 255, 1));
     animation:
-            tail $shooting-time ease-in-out infinite,
+            tail $shooting-time ease-in-out infinite,// chỉ định hiệu ứng chuyển tiếp vs bắt đầu và kết thúc chậm (ease in out)
             shooting $shooting-time ease-in-out infinite;
 
     &::before {
         content: '';
-        position: absolute;
+        position: absolute;//tuyệt đối so với parent
         top: calc(50% - 1px);
         right: 0;
         // width: 30px;
